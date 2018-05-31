@@ -229,43 +229,6 @@ input .search-key {
         <button id="signin-button" onclick="handleSignInClick()">Sign In</button>
     </div>
 
-    <!-- <div class="container">
-        <form class="card" id="filters-card">
-            <h1>Agent Search</h1>
-            <br>
-            <div id="display"></div>
-            <br>
-            <div id="buttons"></div>
-            <br> -->
-
-            <!-- CONDITIONAL FORMATTING TOGGLE: on / off -->
-            <!-- <div id="slider">
-                <label class="switch">
-                    <input type="checkbox" name="view-conditional" onclick="handleFormatting();" id="format-target" value="1" />
-                    <span class="slider round"></span>
-                </label>
-                <span>conditional formatting</span>
-            </div>
-            <br> -->
-
-            <!-- THEME TOGGLE: light / dark -->
-            <!-- $('table').addClass("table-dark"); -->
-            <!-- <div id="slider">
-                <label class="switch">
-                    <input type="checkbox" name="view-theme" onclick="handleTheme();" id="theme-target" value=1/>
-                    <span class="slider round"></span>
-                </label>
-                <span>dark/light theme</span>
-            </div>
-
-            <input type="button" value="Apply Filters/Toggles" onclick="handleToggle();" class="filter-submit-button-1" id="filterButton"
-            /> -->
-            <!-- generate_table(); removed from onclick for testing -->
-<!--
-            <input type="reset" value="Clear Filters" class="filter-submit-button-1" id="clearButton" />
-        </form>
-    </div> -->
-
     <input type="text" id="tableInputManager" class="search-key" onkeyup="searchAll()" placeholder="Search by Manager...">
     <input type="text" id="tableInputAgent" class="search-key" onkeyup="searchAll()" placeholder="Search by Agent...">
     <input type="text" id="tableInputSuper" class="search-key" onkeyup="searchAll()" placeholder="Search by Sup...">
@@ -320,9 +283,12 @@ input .search-key {
     $(document).ready(function () {
 
         var table = document.createElement("table")
+        var count = $(this).length
+        $('.navbar').append("Rows Returned: "+count)
+        console.log("row count: "+count)
 
         $("#clearButton").on("click", function () {
-            $('.js-example-basic-multiple').val(null).trigger('change');
+            $('.js-example-basic-multiple').val(null).trigger('change')
         })
 
 

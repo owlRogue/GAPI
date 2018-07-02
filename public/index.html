@@ -28,7 +28,7 @@
     </navbar>
 
     <h2></h2>
-<div id='inputs' class='hide'>
+<div id='input-filters' class='hide'>
     <div id="dimension-filters">
         Dimensions
     <br>
@@ -110,19 +110,17 @@
         };
 
         $('.sheet-button').on("click", function callTable() {
-            $('#inputs').addClass('hide');
             sheet_ID = $(this).data("sheetInfo").id;
             sheet_range = $(this).data("sheetInfo").range;
             sheet_title = $(this).data("sheetInfo").title;
+            // $('#input-filters').addClass('hide');
             event.preventDefault();
             $('#headerRow').empty();
             $('#tableBody').empty();
             $('h2').empty();
             makeApiCall();
             $('h2').append(sheet_title);
-            $('#inputs').removeClass('hide');
         });
-
 
         const cells = $(tableHead).find('td');
         cells.each(function (i) {
@@ -150,7 +148,7 @@
     });
 
     function renderTable(tableData) {
-        $('#inputs').removeClass('hide');
+        $('#input-filters').removeClass('hide');
 
         const table = document.getElementById("tableBody");
         const tableHead = document.getElementById("headerRow");

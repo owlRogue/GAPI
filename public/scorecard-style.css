@@ -50,9 +50,18 @@ button {
   font-size: 20px;
 }
 
-#inputs {
-  background-color: beige;
+#input-filters {
+  background-color: #B7D2E2;
+  /* background-color: #D6ECFA; */
+  padding: 20px 20px 20px 20px;
   width: 100%;
+  height: auto;
+}
+
+#dimension-filters, #metric-filters {
+  background-color: #D6ECFA;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .hide {
@@ -68,9 +77,8 @@ button {
 }
 
 h2 {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  padding: 5px;
+  margin: 10px;
+  padding: 10px;
   height: 30px;
   width: auto;
 }

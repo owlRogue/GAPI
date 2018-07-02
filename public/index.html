@@ -1,36 +1,47 @@
-<html>
+<!--python -m SimpleHTTPServer 8000-->
+
 <!DOCTYPE html>
 <html lang="en">
+<!-- Seems to be broken checking for errors -->
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agent ScoreCard v1.3 (DEV)</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
-    <script type="text/javascript" src="../cred/credentials.js"></script>
+    <script type="text/javascript" src="credentials.js"></script>
+    <script type="text/javascript" src="conditionalsettings.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans:100,400,600,700">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link href="scorecard-style.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" type="text/javascript"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-    <link href="style.css" rel="stylesheet">
     <script src="https://apis.google.com/js/api.js"></script>
 </head>
 
 <style></style>
 
 <body>
-    <div class="navbar">
+    <navbar class="navbar">
         <button id="signin-button" onclick="handleSignInClick()">Sign In</button>
-    </div>
+    </navbar>
 
+    <h2></h2>
+<div id='inputs' class='hide'>
+    <div id="dimension-filters">
+        Dimensions
+    <br>
     <input type="text" id="tableInputLocation" class="search-key" onkeyup="searchAll()" placeholder="Search by Location">
-    <input type="text" id="tableInputPosition" class="search-key" onkeyup="searchAll()" placeholder="Search by Position">
     <input type="text" id="tableInputManager" class="search-key" onkeyup="searchAll()" placeholder="Search by Manager">
+    <input type="text" id="tableInputPosition" class="search-key" onkeyup="searchAll()" placeholder="Search by Position">
     <input type="text" id="tableInputSupervisor" class="search-key" onkeyup="searchAll()" placeholder="Search by Sup">
     <input type="text" id="tableInputAgent" class="search-key" onkeyup="searchAll()" placeholder="Search by Agent">
-    <div id="filter-break"></div>
+    </div>
+    <br>
+    <div id="metric-filters">
+    Metrics
+    <br>
     <input type="text" id="tableInputFCR" class="search-key" onkeyup="searchAll()" placeholder="filter fcr">
     <input type="text" id="tableInputAE" class="search-key" onkeyup="searchAll()" placeholder="filter agent ease">
     <input type="text" id="tableInputAHT" class="search-key" onkeyup="searchAll()" placeholder="filter aht">
@@ -40,13 +51,15 @@
     <input type="text" id="tableInputRESOLVED" class="search-key" onkeyup="searchAll()" placeholder="filter tickets resolved">
     <input type="text" id="tableInputCALLS" class="search-key" onkeyup="searchAll()" placeholder="filter call count">
     <input type="text" id="tableInputCHATS" class="search-key" onkeyup="searchAll()" placeholder="filter chat count">
-
+    <input type="text" id="tableInputDcast" class="search-key" onkeyup="searchAll()" placeholder="filter dcast %">
+    </div>
+</div>
 
     <div class="table-responsive-lg">
-        <h2>Agent Scorecard</h2>
         <table class="table" id="theTable">
+            <div id="instructions"></div>
             <!--BOOTSTRAP CLASS-->
-            <thead id="tHead">
+            <thead id="tableHead">
                 <tr id="headerRow" class="header"></tr>
             </thead>
             <tbody id=tableBody>
@@ -59,355 +72,329 @@
 
 <script type="text/javascript">
 
-    const conditionClasses = ["exceptional", "highly_effective", "achieves", "NI", "unacceptable"];
-    var results;
-    var filteredResults;
-    var date_range_col;
-    var values;
-    var currentValue = 0;
-
-    function handleTheme() {
-        // Get the checkbox
-        var checkBox = $("#theme-target")
-        // If the checkbox is checked, display the output text
-        if (checkBox.value = 1) {
-            // $('.dimension').css("background-color", "teal")
-            $('table').addClass("table-dark")
-            console.log("dark theme on");
-        } else if (checkBox.value = 1) {
-            $('table').removeClass("table-dark")
-            console.log("dark theme off");
-        };
-    };
-
-    function handleFormatting() {
-        // Get the checkbox
-        var checkBox = $("#format-target")
-        var themeBox = $("#theme-target")
-        // If the checkbox is checked, display the output text
-        if ((checkBox.value = 1) && (themeBox.value = 1)) {
-            $('.metric').css("background-color", "black")
-            console.log("dark theme on, so, make the boxes black");
-        } else if ((checkBox.value = 1) && (themeBox.value = 0)) {
-            $('table').css("background-color", "white")
-            console.log("light theme on, so, make the boxes white");
-        };
-    };
-
-
-
     $(document).ready(function () {
+        let results;
+        let values;
 
-        var table = document.createElement("table")
+        let sheet_ID;
+        let sheet_range;
+        let sheet_title;
+        let thisSheet;
+        let buttonTitle;
+        let buttonSheetID;
+        let buttonSheetRange;
 
+        for (i = 0; i < sheet.length; i++) {
 
+            thisSheet = {
+                sheet_ID: sheet[i].sheet_ID,
+                sheet_range: sheet[i].sheet_range,
+                sheet_title: sheet[i].sheet_title
+            }
 
-        $("#clearButton").on("click", function () {
-            $('.js-example-basic-multiple').val(null).trigger('change');
-        })
+            rawTitle = thisSheet.sheet_title;
+            buttonTitle = rawTitle.replace(/[- ]/g, '')
+                .trim()
+                .replace(/ /g, '-');
+            buttonSheetID = thisSheet.sheet_ID;
+            buttonSheetRange = thisSheet.sheet_range;
 
-        function handleClick(formatToggle) {
-            $('.metric').css("background-color", "teal")
-        }
-
-    });
-    // END DOCUMENT READY
-
-        // CALL GSHEETS
-    function makeApiCall() {
-        var params = {
-            spreadsheetId: sheet.sheet_ID,
-            range: ['A1:Q1200'],
-            valueRenderOption: 'FORMATTED_VALUE',
-            dateTimeRenderOption: 'SERIAL_NUMBER'
+            const sheetBtn = $('<button>')
+                .addClass('sheet-button ' + buttonTitle)
+                // .attr("sheet-id", buttonSheetID)
+                // .attr("sheet-range", buttonSheetRange)
+                // .attr("sheet-title", buttonTitle)
+                .text(rawTitle)
+                .appendTo('.navbar')
+                .data("sheetInfo", { id: buttonSheetID, range: buttonSheetRange, title: buttonTitle });
         };
-        var request = gapi.client.sheets.spreadsheets.values.get(params);
-        request.then(function (response) {
-            result = response.result.values;
-            renderTable(result);
+
+        $('.sheet-button').on("click", function callTable() {
+            $('#inputs').addClass('hide');
+            sheet_ID = $(this).data("sheetInfo").id;
+            sheet_range = $(this).data("sheetInfo").range;
+            sheet_title = $(this).data("sheetInfo").title;
+            event.preventDefault();
+            $('#headerRow').empty();
+            $('#tableBody').empty();
+            $('h2').empty();
+            makeApiCall();
+            $('h2').append(sheet_title);
+            $('#inputs').removeClass('hide');
+        });
+
+
+        const cells = $(tableHead).find('td');
+        cells.each(function (i) {
+            cells[i].onclick = (function (n) {
+                return function () {
+                    sortTable(n);
+                };
+            })(i);
+        });
+
+        function makeApiCall() {
+            $('#instructions').empty().removeClass('instructions');
+            const params = {
+                spreadsheetId: sheet_ID,
+                range: sheet_range,
+                valueRenderOption: 'FORMATTED_VALUE',
+                dateTimeRenderOption: 'SERIAL_NUMBER'
+            };
+
+            const request = gapi.client.sheets.spreadsheets.values.get(params);
+            request.then(function (response) {
+                renderTable(response.result.values);
+            });
+        }
+    });
+
+    function renderTable(tableData) {
+        $('#inputs').removeClass('hide');
+
+        const table = document.getElementById("tableBody");
+        const tableHead = document.getElementById("headerRow");
+
+        tableData.forEach((data, i) => {
+            if (i === 0) {
+                for (const titleItem of data) {
+                    tableHead.insertCell().append(titleItem);
+                }
+
+            } else {
+                const row = table.insertRow();
+                for (const dataItem of data) {
+                    row.insertCell().append(dataItem);
+                }
+            }
+
+        });
+
+        // const colNum = $(this).cellIndex
+
+        const dimension = ['date range', 'date interval', 'location: most recent', 'manager: most recent', 'position: most recent', 'supervisor: most recent', 'supervisor: historical', 'agent name', 'agent email'];
+        const formattedmetric = ['7 day call fcr', 'agent ease', 'replacement rate', 'aux %', 'aht', 'deltacast'];
+        const extrametric = [];
+        const condition = ['exceptional', 'effective', 'achieves', 'NI', 'unacceptable'];
+        
+        // const length = $('thead td').length;
+        $('thead td').each(function (i) {
+            const cellText = this.innerHTML;
+            let fieldType = 'indextitle';
+            
+            if (!$('thead td').hasClass('indextitle'))  { }
+            if (dimension.includes(cellText)) {
+                    fieldType = 'dimension';
+                } else if (formattedmetric.includes(cellText)) {
+                    fieldType = 'formatted-metric';
+                } else {
+                    fieldType = this.innerHTML;
+                    extrametric.push(fieldType);
+                }
+                const hyph = cellText.replace(/[%:]/g, '')
+                .trim()
+                .replace(/ /g, '-');
+                
+                let startCol = i + 1;
+                $('tbody td:nth-child(' + startCol + ')').addClass(hyph + ' ' + fieldType + ' ' + i);
+                $('thead td:nth-child(' + startCol + ')').addClass(hyph + ' ' + fieldType + ' ' + i + ' ' + 'indextitle');
+            });
+            
+            console.log("unlisted metrics: " + extrametric); // ERROR CHECK COMPONENT // DO NOT DELETE <<<<< <<< <
+
+        // const cellText = this.innerHTML;
+        // const cellText = $(this).text();
+        console.log(fcr.condition);
+        console.log(settings);
+        console.log(conditions);
+          let status;
+          let cellNum;
+          let exceptional
+          let effective;
+          let achieves;
+          let NI;
+        
+
+        $('.aht').each(function () {
+            const cellText = this.innerHTML;
+            exceptional = 600;
+            effective = 720;
+            achieves = 840;
+            NI = 1050;
+            const noComma = cellText.replace(/\,/g, '');
+            cellNum = parseFloat(noComma);
+
+            if ($(this).hasClass('indextitle'))  {
+                 status = 'ignore';
+            }
+            else if (cellNum <= exceptional) {
+                status = 'exceptional';
+            }
+            else if (cellNum > exceptional && cellNum <= effective) {
+                status = 'effective';
+            }
+            else if (cellNum > effective && cellNum <= achieves) {
+                status = 'achieves';
+            }
+            else if (cellNum > achieves && cellNum <= NI) {
+                status = 'NI';
+            }
+            else if (cellNum > NI) {
+                status = 'unacceptable';
+            };
+
+            $(!'.indextitle').addClass(status);
+            $(this).addClass(status);
+        });
+
+        $('.7-day-call-fcr').each(function () {
+            const cellText = this.innerHTML;
+            exceptional = 82.00;
+            effective = 80.00;
+            achieves = 78.00;
+            NI = 76.00;
+            const noComma = cellText.replace(/\,/g, '');
+            cellNum = parseFloat(noComma);
+
+            if ($(this).hasClass('indextitle'))  {
+                 status = 'ignore';
+            }
+            else if (cellNum <= exceptional) {
+                status = 'exceptional';
+            }
+            else if (cellNum > exceptional && cellNum <= effective) {
+                status = 'effective';
+            }
+            else if (cellNum > effective && cellNum <= achieves) {
+                status = 'achieves';
+            }
+            else if (cellNum > achieves && cellNum <= NI) {
+                status = 'NI';
+            }
+            else if (cellNum > NI) {
+                status = 'unacceptable';
+            };
+
+            $(!'.indextitle').addClass(status);
+            $(this).addClass(status);
+        });
+
+        $('.agent-ease').each(function () {
+            const cellText = this.innerHTML;
+            exceptional = 9.9;
+            effective = 9.7;
+            achieves = 9.5;
+            NI = 9.2;
+            cellNum = parseFloat(cellText);
+
+            if ($(this).hasClass('indextitle'))  {
+                 status = 'ignore';
+            }
+            else if (cellNum >= exceptional) {
+                status = 'exceptional';
+            }
+            else if (cellNum < exceptional && cellNum >= effective) {
+                status = 'effective';
+            }
+            else if (cellNum < effective && cellNum >= achieves) {
+                status = 'achieves';
+            }
+            else if (cellNum < achieves && cellNum >= NI) {
+                status = 'NI';
+            }
+            else if (cellNum < NI) {
+                status = 'unacceptable';
+            };
+
+            $(!'.indextitle').addClass(status);
+            $(this).addClass(status);
+        });
+
+        $('.replacement-rate').each(function () {
+            const cellText = this.innerHTML;
+            exceptional = .06;
+            effective = .07;
+            achieves = .08;
+            NI = .09;
+            cellNum = parseFloat(cellText);
+
+            if ($(this).hasClass('indextitle'))  {
+                 status = 'ignore';
+            }
+            else if (cellNum >= exceptional) {
+                status = 'exceptional';
+            }
+            if (cellNum < exceptional && cellNum >= effective) {
+                status = 'effective';
+            }
+            if (cellNum < effective && cellNum >= achieves) {
+                status = 'achieves';
+            }
+            if (cellNum < achieves && cellNum >= NI) {
+                status = 'NI';
+            }
+            if (cellNum < NI) {
+                status = 'unacceptable';
+            };
+
+            $(!'.indextitle').addClass(status);
+            $(this).addClass(status);
+        });
+
+        $('.aux').each(function () {
+            const cellText = this.innerHTML;
+            const cleanedText = cellText.replace(/[%]/g, '');
+            cellNum = parseFloat(cleanedText);
+            // const cleanNum = cellText.replace(/\D/g, '');
+            exceptional = (cellNum < 26);
+            unacceptable = (cellNum > 32);
+            NI = (cellNum > 30 && !unacceptable);
+            achieves = (cellNum > 28 && !NI);
+            effective = (cellNum >= 26 && !achieves);
+            // if ((unacceptable) || (NI) || || ||
+            // console.log(condition = true);
+            //  unacc.push(condition);
+                
+            if ($(this).hasClass('indextitle'))  {
+                 status = 'ignore';
+            }
+            else if (exceptional) {
+                status = 'exceptional';
+            }
+            else if (effective) {
+                status = 'effective';
+            }
+            else if (achieves) {
+                status = 'achieves';
+            }
+            else if (NI) {
+                status = 'NI';
+            }
+            else if (unacceptable) {
+                status = 'unacceptable';
+            };
+
+        });
+
+        const cells = $(tableHead).find('td');
+        cells.each(function (i) {
+            cells[i].onclick = (function (n) {
+                return function () {
+                    sortTable(n);
+                };
+            })
+                (i);
         });
     }
 
-    function renderTable(tableData) {
-        const values = {
-            date_range: [],
-            date_interval: [],
-            location_most_recent: [],
-            manager_most_recent: [],
-            position_most_recent: [],
-            supervisor_most_recent: [],
-            agent_names: [],
-            fcr_7: [],
-            agent_ease: [],
-            aht: [],
-            aux: [],
-            inbound_calls: [],
-            plc: [],
-            resolved: [],
-            calls: [],
-            chats: []
-        };
-        const rowData = tableData.map(result => {
-            values.date_range.push(result[0]);
-            values.date_interval.push(result[1]);
-            values.location_most_recent.push(result[2]);
-            values.manager_most_recent.push(result[3]);
-            values.position_most_recent.push(result[4]);
-            values.supervisor_most_recent.push(result[5]);
-            values.agent_names.push(result[6]);
-            values.fcr_7.push(result[8]);
-            values.agent_ease.push(result[9]);
-            values.aht.push(result[10]);
-            values.aux.push(result[11]);
-            values.inbound_calls.push(result[12]);
-            values.plc.push(result[13]);
-            values.resolved.push(result[14]);
-            values.calls.push(result[15]);
-            values.chats.push(result[16]);
-
-            return {
-                date_range: result[0],
-                date_interval: result[1],
-                location_most_recent: result[2],
-                manager_most_recent: result[3],
-                position_most_recent: result[4],
-                supervisor_most_recent: result[5],
-                agent_names: result[6],
-                fcr_7: result[8],
-                agent_ease: result[9],
-                aht: result[10],
-                aux: result[11],
-                inbound_calls: result[12],
-                plc: result[13],
-                resolved: result[14],
-                calls: result[15],
-                chats: result[16],
-
-            }
-        });
-
-        var table = document.getElementById("tableBody");
-        var tHead = document.getElementById("headerRow");
-
-        rowData.forEach((data, i) => {
-            var nrow = table.insertRow()
-            var items = [data.date_range, data.date_interval, data.location_most_recent, data.manager_most_recent, data.position_most_recent, data.supervisor_most_recent, data.agent_names, data.fcr_7, data.agent_ease, data.aht, data.aux, data.inbound_calls, data.plc, data.resolved, data.calls, data.chats]
-            // var date_range_col = data.date_range
-
-            // console.log(
-            //     "\ndate range: " + values.date_range[i] +
-            //     "\ndate interval: " + values.date_interval[i] +
-            //     "\nagent_names: " + values.agent_names[i] +
-            //     "\nlocation_most_recent: " + values.location_most_recent[i] +
-            //     "\nposition_most_recent: " + values.position_most_recent[i] +
-            //     "\nmanager_most_recent: " + values.manager_most_recent[i] +
-            //     "\nsupervisor_most_recent: " + values.supervisor_most_recent[i] +
-            //     "\nfcr_7: " + values.fcr_7[i] +
-            //     "\nagent_ease: " + values.agent_ease[i] +
-            //     "\naht: " + values.aht[i] +
-            //     "\naux: " + values.inbound_calls[i] +
-            //     "\nplc: " + values.plc[i] +
-            //     "\nresolved: " + values.resolved[i] +
-            //     "\ncalls: " + values.calls[i] +
-            //     "\nchats: " + values.chats[i]
-            // ) 
-        // USE TO BUILD CARD-STYLE VIEW
-
-            if (i == 0) {
-                for (var a in items) {
-                    var newHeaderCell = tHead.insertCell().append(items[a]) //.onclick() = function(){sortTable(a)}
-                };
-            } else {
-                for (var z in items) {
-                    var itemnum = items[z]
-                    var newCell = nrow.insertCell().append(itemnum)
-                }
-            }
-        });
-
-        const col_date_range = $('tbody td:nth-child(1)')
-            .addClass("dimension date-range")
-        //  .attr("onclick", 'sortTable(0)');
-        const col_date_interval = $('tbody td:nth-child(2)')
-            .addClass("dimension date_interval")
-        //  .attr("onclick", 'sortTable(1)')
-        const col_location_most_recent = $('tbody td:nth-child(3)')
-            .addClass("dimension location")
-        //  .attr("onclick", 'sortTable(2)');
-        const col_position_most_recent = $('tbody td:nth-child(5)')
-            .addClass("dimension position")
-        //  .attr("onclick", 'sortTable(3)');
-        const col_manager_most_recent = $('tbody td:nth-child(4)')
-            .addClass("dimension manager")
-            .attr("data-input", 'tableInputManager')
-        //  .attr("onclick", 'sortTable(4)');
-        const col_supervisor_most_recent = $('tbody td:nth-child(6)')
-            .addClass("dimension supervisor")
-            .attr("data-input", 'tableInputSuper')
-        //  .attr("onclick", 'sortTable(5)');
-        const col_agent_names = $('tbody td:nth-child(7)')
-            .addClass("dimension agent-name")
-            .attr("data-input", 'tableInputAgent')
-        //  .attr("onclick", 'sortTable(6)');
-        const col_fcr_7 = $('tbody td:nth-child(8)')
-            .addClass("metric fcr")
-        //  .attr("onclick", 'sortTable(7)');
-        const col_agent_ease = $('tbody td:nth-child(9)')
-            .addClass("metric agent-ease")
-        //  .attr("onclick", 'sortTable(8)');
-        const col_aht = $('tbody td:nth-child(10)')
-            .addClass("metric aht")
-        //  .attr("onclick", 'sortTable(9)');
-        const col_aux = $('tbody td:nth-child(11)')
-            .addClass("metric aux")
-        //  .attr("onclick", 'sortTable(10)');
-        const col_inbound_calls = $('tbody td:nth-child(12)')
-            .addClass("metric inbound-calls")
-        //  .attr("onclick", 'sortTable(11)');
-        const col_plc = $('tbody td:nth-child(13)')
-            .addClass("metric plc")
-        //  .attr("onclick", 'sortTable(12)');
-        const col_resolved = $('tbody td:nth-child(14)')
-            .addClass("metric resolved-tickets")
-        //  .attr("onclick", 'sortTable(13)');
-        const col_calls = $('tbody td:nth-child(15)')
-            .addClass("metric total-calls")
-        //  .attr("onclick", 'sortTable(14)');
-        const col_chats = $('tbody td:nth-child(16)')
-            .addClass("metric chats")
-        //    .attr("onclick", 'sortTable(15)');
-
-
-        $(col_agent_names).each(
-            function () {
-                $(this).addClass('agent-name')
-            }
-        );
-
-        $(col_fcr_7).each(
-            function () {
-                var exceptional = 600, // green #4fab47
-                    effective = 720, // blue #7c92cc
-                    achieves = 840, // no formatting
-                    NI = 1050, // yellow #fcc558
-                    // unacceptable = 1050, // red #eb340b
-                    cellText = $(this).text();
-                cellNum = parseFloat(cellText);
-                $(this).addClass('fcr');
-                if (cellNum <= exceptional) {
-                    $(this).addClass('exceptional');
-                } else if (cellNum > exceptional && cellNum <= effective) {
-                    $(this).addClass('effective');
-                } else if (cellNum > effective && cellNum <= achieves) {
-                    $(this).addClass('achieves');
-                } else if (cellNum > achieves && cellNum <= NI) {
-                    $(this).addClass('NI');
-                } else if (cellNum > NI) {
-                    $(this).addClass('unacceptable');
-                }
-            });
-
-        $(col_agent_ease).each(
-            function () {
-                var exceptional = parseInt(9.9), // green #4fab47
-                    effective = parseInt(9.7), // blue #7c92cc
-                    achieves = parseInt(9.5), // no formatting
-                    NI = parseInt(9.2), // yellow #fcc558
-                    // unacceptable = 1050, // red #eb340b
-                    cellText = $(this).text();
-                cellNum = parseInt(cellText);
-                $(this).addClass('agent-ease');
-                if (cellNum >= exceptional) {
-                    $(this).addClass('exceptional');
-                } else if (cellNum < exceptional && cellNum >= effective) {
-                    $(this).addClass('effective');
-                } else if (cellNum < effective && cellNum >= achieves) {
-                    $(this).addClass('achieves');
-                } else if (cellNum < achieves && cellNum >= NI) {
-                    $(this).addClass('NI');
-                } else if (cellNum < NI) {
-                    $(this).addClass('unacceptable');
-                }
-            });
-
-        $(col_aht).each(
-            function () {
-                var exceptional = 600, // green #4fab47
-                    effective = 720, // blue #7c92cc
-                    achieves = 840, // no formatting
-                    NI = 1050, // yellow #fcc558
-                    // unacceptable = 1050, // red #eb340b
-                    cellText = $(this).text();
-                cellNum = parseInt(cellText);
-                $(this).addClass('aht');
-                if (cellNum <= exceptional) {
-                    $(this).addClass('exceptional');
-                } else if (cellNum > exceptional && cellNum <= effective) {
-                    $(this).addClass('effective');
-                } else if (cellNum > effective && cellNum <= achieves) {
-                    $(this).addClass('achieves');
-                } else if (cellNum > achieves && cellNum <= NI) {
-                    $(this).addClass('NI');
-                } else if (cellNum > NI) {
-                    $(this).addClass('unacceptable');
-                }
-            });
-
-        $(col_aux).each(
-            function () {
-                var exceptional = 12, // green #4fab47
-                    effective = 14, // blue #7c92cc
-                    achieves = 17, // no formatting
-                    NI = 21, // yellow #fcc558
-                    // unacceptable = 1050, // red #eb340b
-                    cellText = $(this).text();
-                cellNum = parseFloat(cellText);
-                $(this).addClass('aux');
-                if (cellNum <= exceptional) {
-                    $(this).addClass('exceptional');
-                } else if (cellNum > exceptional && cellNum <= effective) {
-                    $(this).addClass('effective');
-                } else if (cellNum > effective && cellNum <= achieves) {
-                    $(this).addClass('achieves');
-                } else if (cellNum > achieves && cellNum <= NI) {
-                    $(this).addClass('NI');
-                } else if (cellNum > NI) {
-                    $(this).addClass('unacceptable');
-                }
-            });
-
-        $(col_plc).each(
-            function () {
-                var exceptional = 2, // green #4fab47
-                    effective = 4, // blue #7c92cc
-                    achieves = 6, // no formatting
-                    NI = 9, // yellow #fcc558
-                    // unacceptable = 1050, // red #eb340b
-                    cellText = $(this).text();
-                cellNum = parseFloat(cellText);
-                $(this).addClass('plc');
-                if (cellNum <= exceptional) {
-                    $(this).addClass('exceptional');
-                } else if (cellNum > exceptional && cellNum <= effective) {
-                    $(this).addClass('effective');
-                } else if (cellNum > effective && cellNum <= achieves) {
-                    $(this).addClass('achieves');
-                } else if (cellNum > achieves && cellNum <= NI) {
-                    $(this).addClass('NI');
-                } else if (cellNum > NI) {
-                    $(this).addClass('unacceptable');
-                }
-            });
-        var cells = tHead.getElementsByTagName("td");
-        for (var o = 0; o < cells.length; o++) {
-            cells[o].onclick = (function (n) { return function () { sortTable(n) } })(o);
-        }
-    };
+    // }); // END DOCUMENT READY
 
     function initClient() {
-        var API_KEY = credentials.gapi_Key;
-        var CLIENT_ID = credentials.gapi_Client;
-        var SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
+        $('#instructions').text('authenticating credentials...');
+        $('#instructions').addClass('instructions');
+        const API_KEY = credentials.gapi_Key;
+        const CLIENT_ID = credentials.gapi_Client;
+        const SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
         gapi.client.init({
             'apiKey': API_KEY,
             'clientId': CLIENT_ID,
@@ -418,157 +405,127 @@
             updateSignInStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
         });
     }
+
     function handleClientLoad() {
         gapi.load('client:auth2', initClient);
     }
+
     function updateSignInStatus(isSignedIn) {
-        if (isSignedIn) {
-            makeApiCall();
+        $('#instructions').text('You are signed in. Please select a report from the nav bar.');
+        if (!$('#instructions').hasClass('instructions')) {
+            $(this).addClass('instructions');
         }
     }
+
     function handleSignInClick(event) {
         gapi.auth2.getAuthInstance().signIn();
     }
+
     function searchAll() {
-        var input, filter, table, tr, td, i;
-        table = document.getElementById("tableBody");
-        tr = table.getElementsByTagName("tr");
+        let table, trs, tds;
+        table = document.getElementById('tableBody');
+        trs = Array.from(table.getElementsByTagName('tr'));
 
-        var input1 = document.getElementById("tableInputLocation")
-        var input2 = document.getElementById("tableInputPosition")
-        var input3 = document.getElementById("tableInputManager")
-        var input4 = document.getElementById("tableInputSupervisor")
-        var input5 = document.getElementById("tableInputAgent")
-
-        var input6 = document.getElementById("tableInputFCR")
-        var input7 = document.getElementById("tableInputAE")
-        var input8 = document.getElementById("tableInputAHT")
-        var input9 = document.getElementById("tableInputAUX")
-        var input10 = document.getElementById("tableInputINBOUND")
-        var input11 = document.getElementById("tableInputPLC")
-        var input12 = document.getElementById("tableInputRESOLVED")
-        var input13 = document.getElementById("tableInputCALLS")
-        var input14 = document.getElementById("tableInputCHATS")
-
-
-        var vlu = [input1.value, input2.value, input3.value, input4.value, input5.value,
-        input6.value, input7.value, input8.value, input9.value, input10.value,
-        input11.value, input12.value, input13.value, input14.value]
-        for (o in vlu) {
-
-            for (i = 0; i < tr.length; i++) {
-                filter1 = vlu[0].toUpperCase();
-                filter2 = vlu[1].toUpperCase();
-                filter3 = vlu[2].toUpperCase();
-                filter4 = vlu[3].toUpperCase();
-                filter5 = vlu[4].toUpperCase();
-
-                filter6 = vlu[5].toUpperCase();
-                filter7 = vlu[6].toUpperCase();
-                filter8 = vlu[7].toUpperCase();
-                filter9 = vlu[8].toUpperCase();
-                filter10 = vlu[9].toUpperCase();
-                filter11 = vlu[10].toUpperCase();
-                filter12 = vlu[11].toUpperCase();
-                filter13 = vlu[12].toUpperCase();
-                filter14 = vlu[13].toUpperCase();
-
-                td = tr[i].getElementsByTagName("td")[2];
-                tz = tr[i].getElementsByTagName("td")[4];
-                tv = tr[i].getElementsByTagName("td")[3];
-                tq = tr[i].getElementsByTagName("td")[5];
-                tc = tr[i].getElementsByTagName("td")[6];
-
-                ta = tr[i].getElementsByTagName("td")[7];
-                tb = tr[i].getElementsByTagName("td")[8];
-                te = tr[i].getElementsByTagName("td")[9];
-                tf = tr[i].getElementsByTagName("td")[10];
-                tg = tr[i].getElementsByTagName("td")[11];
-                th = tr[i].getElementsByTagName("td")[12];
-                ti = tr[i].getElementsByTagName("td")[13];
-                tj = tr[i].getElementsByTagName("td")[14];
-                tk = tr[i].getElementsByTagName("td")[15];
-
-
-
-                if (td && tz && tv && tq && tc && ta && tb && te && tf && tg && th && ti && tj && tk) {
-                    if (td.innerHTML.toUpperCase().indexOf(filter1) > -1 &&
-                        tz.innerHTML.toUpperCase().indexOf(filter2) > -1 &&
-                        tv.innerHTML.toUpperCase().indexOf(filter3) > -1 &&
-                        tq.innerHTML.toUpperCase().indexOf(filter4) > -1 &&
-                        tc.innerHTML.toUpperCase().indexOf(filter5) > -1 &&
-
-                        ta.innerHTML.toUpperCase().indexOf(filter6) > -1 &&
-                        tb.innerHTML.toUpperCase().indexOf(filter7) > -1 &&
-                        te.innerHTML.toUpperCase().indexOf(filter8) > -1 &&
-                        tf.innerHTML.toUpperCase().indexOf(filter9) > -1 &&
-                        tg.innerHTML.toUpperCase().indexOf(filter10) > -1 &&
-                        th.innerHTML.toUpperCase().indexOf(filter11) > -1 &&
-                        ti.innerHTML.toUpperCase().indexOf(filter12) > -1 &&
-                        tj.innerHTML.toUpperCase().indexOf(filter13) > -1 &&
-                        tk.innerHTML.toUpperCase().indexOf(filter14) > -1) {
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none"
-                    }
-                }
-            }
-                var count = $('#theTable #tableBody tr').length;
-            var rowCount = $('<div>Rows Returned: </div>')
-            $('.navbar').append(rowCount);
-            // $(rowCount).append(count);
-    // console.log("row count: " + count);
+        const vlllu = ['tableInputLocation', 'tableInputPosition', 'tableInputManager', 'tableInputSupervisor', 'tableInputAgent', 'tableInputFCR', 'tableInputAE',
+            'tableInputAHT', 'tableInputAUX', 'tableInputINBOUND', 'tableInputPLC', 'tableInputRESOLVED', 'tableInputCALLS', 'tableInputCHATS', 'tableInputDcast']
+        const vlu = [];
+        for (d in vlllu) {
+            vlu.push(document.getElementById(vlllu[d]).value);
         }
 
+        trs.forEach(function (tr, i) {
+
+            let filters = [];
+            vlu.forEach((filter, j) =>
+                filters.push(filter.toUpperCase()));
+            console.log(filters)
+
+            const testhere = tr.getElementsByTagName("td");
+
+            if (testhere[2] && testhere[3] && testhere[4] && testhere[5] && testhere[6] && testhere[7] && testhere[8] && testhere[9] && testhere[10] && testhere[11] && testhere[12] && testhere[13] && testhere[14] && testhere[15] && testhere[16]) {
+                if (testhere[2].innerHTML.toUpperCase().indexOf(filters[0]) > -1 &&
+                    testhere[3].innerHTML.toUpperCase().indexOf(filters[1]) > -1 &&
+                    testhere[4].innerHTML.toUpperCase().indexOf(filters[2]) > -1 &&
+                    testhere[5].innerHTML.toUpperCase().indexOf(filters[3]) > -1 &&
+                    testhere[6].innerHTML.toUpperCase().indexOf(filters[4]) > -1 &&
+                    testhere[7].innerHTML.toUpperCase().indexOf(filters[5]) > -1 &&
+                    testhere[8].innerHTML.toUpperCase().indexOf(filters[6]) > -1 &&
+                    testhere[9].innerHTML.toUpperCase().indexOf(filters[7]) > -1 &&
+                    testhere[10].innerHTML.toUpperCase().indexOf(filters[8]) > -1 &&
+                    testhere[11].innerHTML.toUpperCase().indexOf(filters[9]) > -1 &&
+                    testhere[12].innerHTML.toUpperCase().indexOf(filters[10]) > -1 &&
+                    testhere[13].innerHTML.toUpperCase().indexOf(filters[11]) > -1 &&
+                    testhere[14].innerHTML.toUpperCase().indexOf(filters[12]) > -1 &&
+                    testhere[15].innerHTML.toUpperCase().indexOf(filters[13]) > -1 &&
+                    testhere[16].innerHTML.toUpperCase().indexOf(filters[14]) > -1) {
+                    tr.style.display = "";
+                } else {
+                    tr.style.display = "none"
+                }
+            }
+        });
     }
 
-    function sortTable(n) {
-        console.log(n)
-        var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-        table = document.getElementById("tableBody");
-        switching = true;
-        //console.log(table)
-        dir = "asc";
-        while (switching) {
-            switching = false;
-            rows = table.getElementsByTagName("tr"); //this returns an error!!!
 
-            for (i = 1; i < (rows.length - 1); i++) {
-                shouldSwitch = false;
-                //  console.log(rows[i])
-                x = rows[i].getElementsByTagName("td")[n];
-                y = rows[i + 1].getElementsByTagName("td")[n];
-                if (dir == "asc") {
-                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                        shouldSwitch = true;
-                        break;
-                    }
-                } else if (dir == "desc") {
-                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                        shouldSwitch = true;
-                        break;
-                    }
-                }
-            }
-            if (shouldSwitch) {
-                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                switching = true;
-                switchcount++;
-            } else {
-                if (switchcount == 0 && dir == "asc") {
-                    dir = "desc";
-                    switching = true;
-                }
-            }
+    function sortTable(n) {
+        let table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+        table = document.getElementById('tableBody');
+        const head = document.getElementById('tableHead').getElementsByTagName('td')[n];
+        const head$ = $(head);
+
+        switching = true;
+        dir = 'asc';
+
+        if (head$.hasClass('asc')) {
+            dir = 'desc';
+            head$.removeClass('asc');
+            head$.addClass('desc');
+        } else {
+            head$.removeClass('desc');
+            head$.addClass('asc')
         }
-        // RENDER SOMETHING FASTER
+
+        rows = Array.from(table.getElementsByTagName('tr'));
+
+        rows.sort((a, b) => {
+            const x = a.getElementsByTagName('td')[n].innerHTML.toLowerCase();
+            const y = b.getElementsByTagName('td')[n].innerHTML.toLowerCase();
+
+            if (x === '' && y === '') {
+                const agentX = $(a).find('.agent-name').text().toLowerCase();
+                const agentY = $(b).find('.agent-name').text().toLowerCase()
+
+
+                if (dir === 'asc') {
+                    return agentX.localeCompare(agentY);
+                }
+                return agentY.localeCompare(agentX);
+            }
+
+
+            if (!(Number.isNaN(parseFloat(x)) || Number.isNaN(parseFloat(y)))) {
+                if (dir === 'asc') {
+                    return parseFloat(x) - parseFloat(y);
+                }
+
+                return parseFloat(y) - parseFloat(x);
+            }
+
+            if (dir === 'asc') {
+                return x.localeCompare(y);
+            }
+            return y.localeCompare(x);
+        });
+
+        const table$ = $(table);
+        table$.empty();
+        rows.forEach(row => table$.append(row));
+
+
     }
 </script>
 <script>
     handleClientLoad();
-</script>
-<script>
-
 </script>
 </body>
 

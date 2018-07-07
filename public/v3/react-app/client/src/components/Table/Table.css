@@ -1,0 +1,73 @@
+table {
+    color: #696969;
+    font-size: 14px;
+    font-weight: 300;
+    width: 100%;
+    border-spacing: 0px;
+    border-collapse: collapse;
+  }
+  
+  #table {
+    margin-bottom: 50px;
+  }
+
+  .instructions {
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 10%;
+    padding: 40px;
+    font-size: 20px;
+  }
+
+  .hide {
+    display: none;
+  } 
+  
+  #tableBody tr:hover {
+    background-color: lightgray;
+  }
+  
+  #headerRow td:hover {
+    background-color: lightskyblue;
+  }
+
+  th {
+    border-top: 1px solid white;
+    line-height: 18px;
+    padding: 2px;
+    border-left: 1px solid white;
+  }
+  
+  td {
+    line-height: 18px;
+    padding: 2px;
+    border-left: 1px solid white;
+    border-top: 1px solid white;
+  }
+
+  /* CONDITIONAL FORMATTING */
+.exceptional {
+    background-color: #4fab47;
+    color: white;
+  }
+  .effective {
+    background-color: #7c92cc;
+    color: white;
+  }
+  .achieves {
+    background-color: lightgray;
+    color: rgb(31, 30, 30);
+  }
+  .NI {
+    background-color: #fcc558;
+  }
+  .unacceptable {
+    background-color: #eb340b;
+    color: white;
+    font-weight: 300;
+  }
+  
+  .no-data, .undefined-column {
+    visibility: hidden;
+  }
+  

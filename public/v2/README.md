@@ -1,0 +1,1 @@
+Follow the intructions in credentials-public.js in order to get your credentials info from Google console.

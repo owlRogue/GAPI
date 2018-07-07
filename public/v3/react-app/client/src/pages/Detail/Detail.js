@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
+import Table from "../../components/Table";
 
 // import OAuth from "../../utils/OAuth";
 
@@ -33,12 +34,10 @@ class Detail extends Component {
         </Row>
         <Row>
           <Col size="md-10 md-offset-1">
-            <article>
               <h1>Table</h1>
-              <p>
+              <Table>
                 {this.state.sheet.data}
-              </p>
-            </article>
+              </Table>
           </Col>
         </Row>
         {/* <Row>

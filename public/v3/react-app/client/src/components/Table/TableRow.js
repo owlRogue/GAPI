@@ -3,9 +3,9 @@ import "./Table";
 
 export const TableHead = props => (
   <thead className="head">
-  <th>
+  <td>
     {props.children}
-  </th>
+  </td>
   </thead>
 );
 
@@ -13,7 +13,7 @@ export const TableRow = props => (
   
   <tbody className="body">
     <tr>
-    {props.children}
+    <td>{props.children}</td>
     </tr>
   </tbody>
 );

@@ -2,22 +2,23 @@ import React from "react";
 import "./Table.css";
 
 export const Table = ({ children }) => {
+<div id="instructions"></div>
+
+
+export const Table = ({ children }) => {
   return (
-    <div className="table-responsive-lg">
-        <div id="instructions"></div>
-            <table className="table">
-              <thead className="head">
+    <table className="table-responsive-lg">
+        <thead className="head">
+              {children}
+        </thead>
+        <tbody className="body">
+            <tr>
+              <td>
                 {children}
-                </thead>
-              <tbody className="body">
-                <tr>
-                <td>{children}
-                </td>
-                </tr>
-                
-            </tbody>
-            </table>
-    </div>
+            </td>
+          </tr>
+        </tbody>
+    </table>
   );
 };
 

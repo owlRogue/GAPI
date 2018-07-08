@@ -12,35 +12,30 @@ mongoose.connect(
 
 const sheetSeed = [
   {
-    title: 'Agent MtD - Import',
-    gid: '1-nT-x2v6abhbaOzDABH3XkUWfS65ihfB8SAdZPIug1I',
-    range: ['A1:R1200'],
+    title: '1l1GyTc65N-afxhIJ-9O7eogKYdOIUvZQw1m1D9IWoyQ',
+    gid: ['A1:Q100'],
+    range: 'dummy data',
     date: new Date(Date.now())
   },
   {
-    title: 'Team MtD ScoreCard',
-    gid: '1JqGHHQb04UF99ch9r9zTADCIAnbUevvyDYK9I8OMS20',
-    range: ['A1:L100']
+    title: "1KbuidBzpeH_i6X-1QoXgxcyi2PoldMyiBtqvRX_OuAQ",
+    gid: ["A1:ZZ200"],
+    range: "Data Bunch 1"
   },
   {
-    title: 'Agent MtD – Autofill',
-    gid: '1SB_o8MuffgbFURB_YxxzqXpaFLrYsvAEUWovrSDjxFE',
-    range: ['A1:R100']
+    title: "INSERT SHEET ID FROM URL",
+    gid: ["INSERT RANGE ARRAY"],
+    range: "Insert sheet title"
   },
   {
-    title: 'Agent EoD – Autofill',
-    gid: '1_iIXq7Pj9OEqgXpJfVP6nIw5j_oN-QvttqDm5D0BkeY',
-    range: ['A1:R100']
+    title: "INSERT SHEET ID FROM URL",
+    gid: ["INSERT RANGE ARRAY"],
+    range: "Insert sheet title"
   },
   {
-    title: 'Agent WtD – Autofill',
-    gid: '1OLDvp6kvyCPZC_izDchq7bgcRQ9r_8CgrKPMuQbNlsM',
-    range: ['A1:R100']
-  },
-  {
-    title: 'Legend',
-    gid: '1GVluuYF9hAgCu5fH9nUqbrQsb-j-r8kLaRFSKE0thi8',
-    range: ['Legend - Source!A1:F37']
+    title: "INSERT SHEET ID FROM URL",
+    gid: ["INSERT RANGE ARRAY"],
+    range: "Insert sheet title"
   }
 ];
 

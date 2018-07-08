@@ -14,7 +14,7 @@ class Sheets extends Component {
     sheets: [],
     title: "",
     gid: "",
-    range: []
+    range: ""
   };
 
   componentDidMount() {
@@ -24,7 +24,7 @@ class Sheets extends Component {
   loadSheets = () => {
     API.getSheets()
       .then(res =>
-        this.setState({ sheets: res.data, title: "", gid: "", range: [] })
+        this.setState({ sheets: res.data, title: "", gid: "", range: "" })
       )
       .catch(err => console.log(err));
   };
@@ -111,7 +111,9 @@ class Sheets extends Component {
                 ))}
               </List>
             ) : (
-              <h3>No Results to Display</h3>
+              <div><h3>No Results to Display</h3>
+              <h2>test this link: http://localhost:3000/sheets/5b428f50f7677131085e1b5c</h2>
+              </div>
             )}
           </Col>
         </Row>

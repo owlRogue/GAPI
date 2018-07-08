@@ -101,7 +101,7 @@ class Sheets extends Component {
                   <ListItem key={sheet._id}>
                     <Link to={"/sheets/" + sheet._id}>
                       <strong>
-                        {sheet.title} by {sheet.author}
+                        {sheet.title} by {sheet.gid}
                       </strong>
                     </Link>
                     <DeleteBtn onClick={() => this.deleteSheet(sheet._id)} />

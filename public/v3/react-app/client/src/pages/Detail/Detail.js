@@ -32,15 +32,17 @@ class Detail extends Component {
             </Jumbotron>
           </Col>
         </Row>
+        {/* 
         <Row>
           <Col size="md-10 md-offset-1">
               <h1>Table</h1>
-              {/* <Table>
+              <List>
                 {this.state.sheet.data}
-              </Table> */}
+              </List>
           </Col>
-        </Row>
-        {/* <Row>
+        </Row> 
+        */}
+        <Row>
           <Col size="md-10 md-offset-1">
             <article>
               <h1>Information</h1>
@@ -49,7 +51,7 @@ class Detail extends Component {
               </p>
             </article>
           </Col>
-        </Row> */}
+        </Row>
         <Row>
           <Col size="md-2">
             <Link to="/">← Back to Report List</Link>

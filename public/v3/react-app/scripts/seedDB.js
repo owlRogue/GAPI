@@ -12,15 +12,15 @@ mongoose.connect(
 
 const sheetSeed = [
   {
-    title: '1l1GyTc65N-afxhIJ-9O7eogKYdOIUvZQw1m1D9IWoyQ',
-    gid: ['A1:Q100'],
-    range: 'dummy data',
+    title: 'Dummy Data',
+    gid: '1l1GyTc65N-afxhIJ-9O7eogKYdOIUvZQw1m1D9IWoyQ',
+    range: ['A1:Q100'],
     date: new Date(Date.now())
   },
   {
-    title: "1KbuidBzpeH_i6X-1QoXgxcyi2PoldMyiBtqvRX_OuAQ",
-    gid: ["A1:ZZ200"],
-    range: "Data Bunch 1"
+    title: "Data Bunch 1",
+    gid: "1KbuidBzpeH_i6X-1QoXgxcyi2PoldMyiBtqvRX_OuAQ",
+    range: ["A1:ZZ200"]
   },
   {
     title: "INSERT SHEET ID FROM URL",

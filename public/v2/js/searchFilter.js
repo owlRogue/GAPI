@@ -37,14 +37,14 @@ function searchAll() {
         console.log(filters);
 
         // const testhere$ = new Array($('tr td')); // prints classes!
-        const testhere = tr.getElementsByTagName("td");
-        console.log(testhere); //
-        $(testhere).forEach(function (i) {
+        const testhere$ = Array.from(document.getElementsByTagName('tr td'));
+        console.log(testhere$); //
+        testhere$.forEach(function(i) {
 
             // if (testhere$[2] && testhere$[3] && testhere$[4] && testhere$[5] && testhere$[6] && testhere$[7] && testhere$[8] && testhere$[9] && testhere$[10] && testhere$[11] && testhere$[12] && testhere$[13] && testhere$[14] && testhere$[15] && testhere$[16]) {
             if (testhere$) {
                 for (let index in testhere$) {
-                    if (testhere$[i].innerHTML.toUpperCase.indexOf(index[i]) > -1) {
+                    if (testhere$.innerHTML.toUpperCase.indexOf(index[i]) > -1) {
                         tr.style.display = "";
                     } else {
                         tr.style.display = "none"

@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const sheetSchema = new Schema({
-  title: String,
+  title: { type: String, required: true },
   gid: { type: String, required: true },
   range: { type: String, required: true },
   date: { type: Date, default: Date.now }

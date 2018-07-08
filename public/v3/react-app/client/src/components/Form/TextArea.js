@@ -1,7 +1,7 @@
-import React from "react";
+// import React from "react";
 
-export const TextArea = props => (
-  <div className="form-group">
-    <textarea className="form-control" rows="10" {...props} />
-  </div>
-);
+// export const TextArea = props => (
+//   <div className="form-group">
+//     <textarea className="form-control" rows="10" {...props} />
+//   </div>
+// );

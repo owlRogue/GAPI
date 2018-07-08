@@ -18,24 +18,24 @@ const sheetSeed = [
     date: new Date(Date.now())
   },
   {
-    title: "Data Bunch 1",
-    gid: "1KbuidBzpeH_i6X-1QoXgxcyi2PoldMyiBtqvRX_OuAQ",
-    range: ["A1:ZZ200"]
+    title: 'Data Bunch 1',
+    gid: '1KbuidBzpeH_i6X-1QoXgxcyi2PoldMyiBtqvRX_OuAQ',
+    range: ['A1:ZZ200']
   },
   {
-    title: "INSERT SHEET ID FROM URL",
-    gid: ["INSERT RANGE ARRAY"],
-    range: "Insert sheet title"
+    title: 'INSERT SHEET ID FROM URL',
+    gid: ['INSERT RANGE ARRAY'],
+    range: 'Insert sheet title'
   },
   {
-    title: "INSERT SHEET ID FROM URL",
-    gid: ["INSERT RANGE ARRAY"],
-    range: "Insert sheet title"
+    title: 'INSERT SHEET ID FROM URL',
+    gid: ['INSERT RANGE ARRAY'],
+    range: 'Insert sheet title'
   },
   {
-    title: "INSERT SHEET ID FROM URL",
-    gid: ["INSERT RANGE ARRAY"],
-    range: "Insert sheet title"
+    title: 'INSERT SHEET ID FROM URL',
+    gid: ['INSERT RANGE ARRAY'],
+    range: 'Insert sheet title'
   }
 ];
 

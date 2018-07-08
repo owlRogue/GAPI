@@ -6,24 +6,24 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
-import { Table } from "../../components/Table";
+// import { Table } from "../../components/Table";
 
 class Sheets extends Component {
   state = {
     sheets: [],
     title: "",
-    id: "",
+    gid: "",
     range: []
   };
 
   componentDidMount() {
     this.loadSheets();
-  }
+  };
 
   loadSheets = () => {
     API.getSheets()
       .then(res =>
-        this.setState({ sheets: res.data, title: "", id: "", range: [] })
+        this.setState({ sheets: res.data, title: "", gid: "", range: [] })
       )
       .catch(err => console.log(err));
   };
@@ -43,10 +43,10 @@ class Sheets extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.title && this.state.id && this.state.range) {
+    if (this.state.title && this.state.gid && this.state.range) {
       API.saveSheet({
         title: this.state.title,
-        author: this.state.author,
+        gid: this.state.gid,
         range: this.state.range
       })
         .then(res => this.loadSheets())
@@ -60,29 +60,30 @@ class Sheets extends Component {
         <Row>
           <Col size="md-6">
             <Jumbotron>
-              <h1>What Report Should I Analyze?</h1>
+              <h2>Add a Google Sheet ID to View a Visual Representation of your Data</h2>
+              <h3>Coming soon: Link any non-nested JSON API endpoint!</h3>
             </Jumbotron>
             <form>
               <Input
                 value={this.state.title}
                 onChange={this.handleInputChange}
                 name="title"
-                placeholder="Title (required)"
+                placeholder="sheet title (required)"
               />
               <Input
-                value={this.state.author}
+                value={this.state.gid}
                 onChange={this.handleInputChange}
-                name="author"
-                placeholder="Author (required)"
+                name="gid"
+                placeholder="google sheet id (required)"
               />
-              <TextArea
-                value={this.state.synopsis}
+              <Input
+                value={this.state.range}
                 onChange={this.handleInputChange}
-                name="synopsis"
-                placeholder="Synopsis (Optional)"
+                name="range"
+                placeholder="range in array format (required)"
               />
               <FormBtn
-                disabled={!(this.state.author && this.state.title)}
+                disabled={!(this.state.title && this.state.gid && this.state.range)}
                 onClick={this.handleFormSubmit}
               >
                 Submit Sheet
@@ -101,7 +102,7 @@ class Sheets extends Component {
                   <ListItem key={sheet._id}>
                     <Link to={"/sheets/" + sheet._id}>
                       <strong>
-                        {sheet.title} by {sheet.gid}
+                        {sheet.title}
                       </strong>
                     </Link>
                     <DeleteBtn onClick={() => this.deleteSheet(sheet._id)} />

@@ -1,5 +1,5 @@
-const express = require("../../../../../../../Library/Caches/typescript/2.9/node_modules/@types/express");
-const bodyParser = require("../../../../../../../Library/Caches/typescript/2.9/node_modules/@types/body-parser");
+const express = require("express");
+const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const fs = require("fs");

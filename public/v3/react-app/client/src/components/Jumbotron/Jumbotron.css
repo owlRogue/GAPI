@@ -1,0 +1,12 @@
+.jumbotron {
+    text-overflow: ellipsis;
+    padding: 10px;
+}
+h2 {
+    font-family: "Josefin Sans";
+    font-weight: 400;
+}
+h3 {
+    font-family: "Josefin Sans";
+    font-weight: 300;
+}

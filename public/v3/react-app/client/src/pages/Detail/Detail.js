@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
-// import Table from "../../components/Table";
+// import Table from "../Detail/Table";
 
 // import OAuth from "../../utils/OAuth";
 
@@ -27,11 +27,11 @@ class Detail extends Component {
             <Jumbotron>
               <h1>
                 {this.state.sheet.title}
-                 {/* by {this.state.sheet.author} */}
               </h1>
             </Jumbotron>
           </Col>
         </Row>
+
         {/* 
         <Row>
           <Col size="md-10 md-offset-1">
@@ -42,6 +42,7 @@ class Detail extends Component {
           </Col>
         </Row> 
         */}
+
         <Row>
           <Col size="md-10 md-offset-1">
             <article>

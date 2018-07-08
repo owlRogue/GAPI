@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 
 const sheetSchema = new Schema({
   title: String,
-  id: { type: String, required: true },
-  range: { type: Array, required: true },
+  gid: { type: String, required: true },
+  range: { type: String, required: true },
   date: { type: Date, default: Date.now }
 });
 

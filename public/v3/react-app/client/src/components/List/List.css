@@ -1,4 +1,6 @@
 .list-overflow-container {
+  font-family: "Josefin Sans";
+  font-weight: 300;
   max-height: 545px;
   border: 1px #DDDDDD solid;
   border-radius: 4px;

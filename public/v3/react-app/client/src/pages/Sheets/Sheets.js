@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-// import DeleteBtn from "../../components/DeleteBtn";
+import DeleteBtn from "../../components/DeleteBtn";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
-import { Table } from "../../components/Table";
+import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
+import { Table } from "../../components/Table";
 
 class Sheets extends Component {
   state = {
@@ -93,18 +94,20 @@ class Sheets extends Component {
             <Jumbotron>
               <h1>Report List</h1>
             </Jumbotron>
+            
             {this.state.sheets.length ? (
-              <Table>
-              {this.state.sheets.map(sheet => (
-
-                  <td>
-                    <strong>
-                      {this.sheet.title}
-                    </strong>
-                  </td>
-
-              ))}
-            </Table>
+              <List>
+                {this.state.sheets.map(sheet => (
+                  <ListItem key={sheet._id}>
+                    <Link to={"/sheets/" + sheet._id}>
+                      <strong>
+                        {sheet.title} by {sheet.author}
+                      </strong>
+                    </Link>
+                    <DeleteBtn onClick={() => this.deleteSheet(sheet._id)} />
+                  </ListItem>
+                ))}
+              </List>
             ) : (
               <h3>No Results to Display</h3>
             )}

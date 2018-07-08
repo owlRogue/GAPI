@@ -6,9 +6,9 @@ var sheet_title;
 
 var sheet = [
   (defaultSheet = {
-    sheet_ID: "INSERT SHEET ID FROM URL",
-    sheet_range: ["INSERT RANGE ARRAY"],
-    sheet_title: "Insert sheet title"
+    sheet_ID: "1KbuidBzpeH_i6X-1QoXgxcyi2PoldMyiBtqvRX_OuAQ",
+    sheet_range: ["A1:ZZ200"],
+    sheet_title: "Data Bunch 1"
   }),
   (sheet1 = {
     sheet_ID: "INSERT SHEET ID FROM URL",

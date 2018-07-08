@@ -1,13 +1,13 @@
 import React from "react";
 import "./Table.css";
 
-export const Table = ({ children }) => {
-<div id="instructions"></div>
+// export const Table = ({ children }) => {
 
 
 export const Table = ({ children }) => {
   return (
     <table className="table-responsive-lg">
+      <div id="instructions"></div>
         <thead className="head">
               {children}
         </thead>

@@ -4,7 +4,6 @@ import { Col, Row, Container } from "../../components/Grid";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 // import Table from "../Detail/Table";
-// import OAuth from "../../utils/OAuth";
 
 class Detail extends Component {
   state = {

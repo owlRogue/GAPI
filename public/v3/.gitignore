@@ -1,6 +1,7 @@
 makeAPIcall.js
 initClient.js
 node_modules/
+OAuth.js
 
 # Logs
 logs

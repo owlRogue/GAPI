@@ -14,8 +14,8 @@ const sheetSeed = [
   {
     title: 'Dummy Data',
     gid: '1l1GyTc65N-afxhIJ-9O7eogKYdOIUvZQw1m1D9IWoyQ',
-    range: "['A1:Q100']",
-    date: new Date(Date.now())
+    range: "['A1:Q100']"
+    // date: new Date(Date.now())
   },
   {
     title: 'Data Bunch 1',

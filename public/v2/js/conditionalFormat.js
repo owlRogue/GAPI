@@ -1,6 +1,7 @@
 // Conditional formatting class setting:
 const KPI = [];
 let KPIs = [];
+
 // currentCondition;
 // currentOperator;
 // currentTarget;
@@ -13,6 +14,7 @@ console.log(setup[0].className + " conditions: " + setup[0].condition);
 console.log("settings: " + settings);
 
 function conditionAssignment() {
+    headerCell$;
     for (i = 0; i < setup.length; i++) {
         KPIs = setup[i];
         KPICondition = KPIs.condition;
@@ -20,8 +22,10 @@ function conditionAssignment() {
         KPITarget = KPIs.target;
         KPIValueParams = KPIs.valueParams;
         KPITitle = KPIs.className;
+        $(headerCell$).innerHTML
         console.log(KPIs);
         // KPI.push(KPIs);
+        // sheet_ID = $(this).data("sheetInfo").id;
     }
 };
 conditionAssignment();

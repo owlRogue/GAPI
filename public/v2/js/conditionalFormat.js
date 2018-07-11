@@ -1,7 +1,7 @@
 // Conditional formatting class setting:
+const formattedMetric = $('.formatted-metric');
 const KPI = [];
 let KPIs = [];
-
 // currentCondition;
 // currentOperator;
 // currentTarget;
@@ -10,11 +10,33 @@ let KPIs = [];
 console.log(fcr);
 console.log("fcr conditions: " + fcr.condition);
 // console.log("kpi conditions: "+KPI.condition); // CANNOT READ
-console.log(setup[0].className + " conditions: " + setup[0].condition);
-console.log("settings: " + settings);
+let conditionsBlock = setup.className + " conditions: " + setup.condition;
+console.log(settings);
+let setting$ = $(settings);
+console.log(setting$);
+
+function formatAssignment() {
+    for (i = 0; i < formattedMetric.length; i++) {
+        class1 = $(formattedMetric[i]).attr('hyph');
+        console.log(class1);
+        const cellText = this.innerHTML;
+
+        KPI;
+        // $(td)
+
+        $('tbody td').each(function (i) {
+            if (($('tbody td').hasClass(classNames[i])) &&
+                (classNames.includes(aht.className))) {
+                KPI = className.parent()
+                console.log(KPI);
+                console.log(className.parent());
+                console.log("KPI: " + KPI);
+            } else {}
+        });
+    }
+};
 
 function conditionAssignment() {
-    headerCell$;
     for (i = 0; i < setup.length; i++) {
         KPIs = setup[i];
         KPICondition = KPIs.condition;
@@ -22,33 +44,18 @@ function conditionAssignment() {
         KPITarget = KPIs.target;
         KPIValueParams = KPIs.valueParams;
         KPITitle = KPIs.className;
-        $(headerCell$).innerHTML
         console.log(KPIs);
+
         // KPI.push(KPIs);
         // sheet_ID = $(this).data("sheetInfo").id;
     }
 };
+console.log(conditionsBlock);
 conditionAssignment();
 
-const formatMe = $('.formatted-metric');
-for (i = 0; i < formatMe.length; i++) {
-    const class1 = formatMe[i].classList.item(0)
-    console.log(class1)
-    const cellText = this.innerHTML;
-    KPI;
-    // $(td)
 
-    $('tbody td').each(function (i) {
-        if (($('tbody td').hasClass(classNames[i])) &&
-            (classNames.includes(aht.className))) {
-            KPI = className.parent()
-            console.log(KPI);
-            console.log(className.parent());
-            console.log("KPI: " + KPI);
-        } else {
-        }
-    });
-}
+
+
 // function currentKPIs (condition, operator, target, value_Params, title) {
 //     currentKPIs.condition = currentCondition,
 //     currentKPIs.operator = currentOperator,
@@ -61,10 +68,10 @@ for (i = 0; i < formatMe.length; i++) {
 // // Sets condition logic:
 
 //         // const cellText = this.innerHTML;
-function testingCondition() {
-  let formattedCell$ = new Array($('.formatted-metric'))
-  console.log('formattedCell$: '+ formattedCell$)
-  console.log(formattedCell$);}; testingCondition();
+// function testingCondition() {
+//   let formattedCell$ = new Array($('.formatted-metric'))
+//   console.log('formattedCell$: '+ formattedCell$)
+//   console.log(formattedCell$);}; testingCondition();
 //     const cellText = $(this).text();
 //     console.log("cellText: " + cellText)
 //         const noComma = cellText.replace(/\,/g, '');
@@ -82,4 +89,4 @@ function testingCondition() {
 //         };
 // }
 // console.log(cellText + currentOperator[0] + currentvalueParams[0]);
-// testingCondition();
+// testingCondition()

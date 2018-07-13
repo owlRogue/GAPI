@@ -1,25 +1,25 @@
-// doesn't work yet
+// // doesn't work yet
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import GoogleLogin from 'react-google-login'; 
-// import { GoogleLogin } from 'react-google-login';
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import GoogleLogin from 'react-google-login'; 
+// // import { GoogleLogin } from 'react-google-login';
  
-const responseGoogle = (response) => {
-  console.log(response);
-}
+// const responseGoogle = (response) => {
+//   console.log(response);
+// }
 
-  // const API_KEY = credentials.gapi_Key;
-  // const CLIENT_ID = ;
+//   // const API_KEY = credentials.gapi_Key;
+//   // const CLIENT_ID = ;
   
-ReactDOM.render(
-  <GoogleLogin
-    clientId={'insert'}
-    // buttonText="Login"
-    onSuccess={responseGoogle}
-    onFailure={responseGoogle}
-  />,
-  document.getElementById('googleButton')
-);
+// ReactDOM.render(
+//   <GoogleLogin
+//     clientId={'insert'}
+//     // buttonText="Login"
+//     onSuccess={responseGoogle}
+//     onFailure={responseGoogle}
+//   />,
+//   document.getElementById('googleButton')
+// );
 
-// https://developers.google.com/identity/sign-in/web/sign-in
+// // https://developers.google.com/identity/sign-in/web/sign-in

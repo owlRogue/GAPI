@@ -1,3 +1,5 @@
+console.log("6: renderTable.js loaded");
+
 // Push Data to table:
 function renderTable(tableData) {
     $('#input-filters').removeClass('hide');
@@ -87,7 +89,7 @@ function renderTable(tableData) {
 
     });
     // console.log("These metrics do not have conditional formatting rules: " + extrametrics);
-    console.log(extrametrics);
+    // console.log(extrametrics);
 
     // Call sortTable function to sort column on header click:
     const cells = $('thead').find('td');

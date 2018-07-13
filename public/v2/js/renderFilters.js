@@ -1,3 +1,5 @@
+console.log("5: renderFilters.js loaded");
+
 function renderFilters(filters) {
 
     // Generate filters:

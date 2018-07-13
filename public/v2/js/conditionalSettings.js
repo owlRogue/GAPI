@@ -1,3 +1,5 @@
+console.log("2: conditionalSettings.js loaded");
+
 // let KPI;
 let currentCondition;
 let currentOperator;
@@ -76,6 +78,8 @@ var setup = [
     className: "deltacast"
   })
 ];
+
+// commit to DB?
 
 // Sets conditional logic:
 

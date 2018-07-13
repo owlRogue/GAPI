@@ -1,3 +1,5 @@
+console.log("1: conditionalFormat.js loaded");
+
 // Conditional formatting class setting:
 const formattedMetric = $('.formatted-metric');
 const KPI = [];

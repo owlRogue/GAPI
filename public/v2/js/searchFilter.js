@@ -1,3 +1,5 @@
+console.log("7: searchFilter.js loaded");
+
 // // Logic to filter using .search-key filters:
 function searchAll() {
     let trs, tds;

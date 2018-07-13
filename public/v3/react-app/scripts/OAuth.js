@@ -13,7 +13,7 @@ const responseGoogle = (response) => {
 ReactDOM.render(
   <GoogleLogin
     clientId={'208109669255-s9hf7ile0omkkivpcm6plpdiagn4ccl6.apps.googleusercontent.com'}
-    buttonText="Login"
+    // buttonText="Login"
     onSuccess={responseGoogle}
     onFailure={responseGoogle}
   />,

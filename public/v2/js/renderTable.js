@@ -86,6 +86,7 @@ function renderTable(tableData) {
             ' ' + i);
 
     });
+    // console.log("These metrics do not have conditional formatting rules: " + extrametrics);
     console.log(extrametrics);
 
     // Call sortTable function to sort column on header click:

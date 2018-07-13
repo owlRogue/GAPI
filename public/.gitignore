@@ -1,10 +1,10 @@
 credentials.js
 initClient.js
-initClient.js
 makeAPIcall.js
 OAuth.js
 node_modules
 package-lock.json
+/credentials
 
 # Logs
 logs

@@ -5,13 +5,17 @@
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    // "start": "./node_modules/.bin/concurrently \"./node_modules/.bin/nodemon\" \"npm run client\""
     "start:prod": "node server.js",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
     "seed": "node scripts/seedDB.js",
     "install": "cd client && yarn install",
     "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "server": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "yarn build && git add . && git commit -m \"Building for production\" && git push heroku master"
   },
   "author": "",
   "license": "ISC",
@@ -29,3 +33,11 @@
     "react-google-login": "^3.2.1"
   }
 }
+
+
+
+
+
+    
+    
+    

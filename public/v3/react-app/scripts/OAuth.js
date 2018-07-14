@@ -6,9 +6,6 @@ import GoogleLogin from 'react-google-login';
 const responseGoogle = (response) => {
   console.log(response);
 }
-
-  // const API_KEY = credentials.gapi_Key;
-  // const CLIENT_ID = ;
   
 ReactDOM.render(
   <GoogleLogin

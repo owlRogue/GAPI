@@ -15,11 +15,11 @@ const Nav = () => (
       Reporting Platform
     </a>
 
-    {/* <button> */}
+    <button>
     <GoogleLogin
         className="googleButton" />
         
-        {/* </button> */}
+        </button>
         
 
         {/* <button

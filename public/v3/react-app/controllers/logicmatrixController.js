@@ -1,34 +1,34 @@
 const db = require("../models");
 
-// Defining methods for the logicmatrixController
+// Defining methods for the MetricsController
 module.exports = {
   findAll: function(req, res) {
-    db.LogicMatrix
+    db.Metric
       .find(req.query)
       // .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findById: function(req, res) {
-    db.LogicMatrix
+    db.Metric
       .findById(req.params.id)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    db.LogicMatrix
+    db.Metric
       .create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
-    db.LogicMatrix
+    db.Metric
       .findOneAndUpdate({ _id: req.params.id }, req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   remove: function(req, res) {
-    db.LogicMatrix
+    db.Metric
       .findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))

@@ -30,7 +30,7 @@ var settings = [
 ];
 
 var setup = [{
-    metric: "metric 1",
+    metric: "metric-1",
     condition: conditions["default"],
     operator: operators["op1"],
     target: "high",
@@ -38,7 +38,7 @@ var setup = [{
     className: "metric-1"
   },
   {
-    metric: "metric 2",
+    metric: "metric-2",
     condition: conditions["default"],
     operator: operators["op1"],
     target: "high",

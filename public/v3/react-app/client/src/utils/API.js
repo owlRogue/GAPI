@@ -17,8 +17,12 @@ export default {
   saveSheet: function (sheetData) {
     return axios.post("/api/sheets", sheetData);
   },
-  // Gets all matrix logic
-  getLogicMatrix: function () {
-    return axios.get("/api/logicmatrix");
+  // Gets all metrics
+  getMetrics: function () {
+    return axios.get("/api/metrics");
+  },
+  // Gets all conditions logic
+  getConditions: function () {
+    return axios.get("/api/conditions");
   }
 };

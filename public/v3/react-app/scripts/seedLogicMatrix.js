@@ -17,7 +17,6 @@ const matrixSeed = [
       valueParams: [],
       custom: []
     }
-    )
     ,
     (operators = {
       op1: ['>=', '<', '>'],

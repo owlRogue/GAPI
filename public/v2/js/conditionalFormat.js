@@ -56,39 +56,40 @@ console.log(conditionsBlock);
 conditionAssignment();
 
 
+function currentKPIs (condition, operator, target, value_Params, title) {
+    currentKPIs.condition = currentCondition,
+    currentKPIs.operator = currentOperator,
+    currentKPIs.target = currentTarget,
+    currentKPIs.value_Params = currentValueParams,
+    currentKPIs.title = currentTitle
+};
 
+currentKPIs()
+console.log(currentKPIs)
 
-// function currentKPIs (condition, operator, target, value_Params, title) {
-//     currentKPIs.condition = currentCondition,
-//     currentKPIs.operator = currentOperator,
-//     currentKPIs.target = currentTarget,
-//     currentKPIs.value_Params = currentValueParams,
-//     currentKPIs.title = currentTitle
-// };
-// currentKPIs()
-// console.log(currentKPIs)
-// // Sets condition logic:
+// Sets condition logic:
+// const cellText = this.innerHTML;
 
-//         // const cellText = this.innerHTML;
-// function testingCondition() {
-//   let formattedCell$ = new Array($('.formatted-metric'))
-//   console.log('formattedCell$: '+ formattedCell$)
-//   console.log(formattedCell$);}; testingCondition();
-//     const cellText = $(this).text();
-//     console.log("cellText: " + cellText)
-//         const noComma = cellText.replace(/\,/g, '');
-//             cellNum = parseFloat(noComma);
+function testingCondition() {
+  let formattedCell$ = new Array($('.formatted-metric'))
+  console.log('formattedCell$: '+ formattedCell$)
+  console.log(formattedCell$);}; testingCondition();
+    const cellText = $(this).text();
+    console.log("cellText: " + cellText)
+        const noComma = cellText.replace(/\,/g, '');
+            cellNum = parseFloat(noComma);
 
-// const compareFirstValue = (cellText + operator[0] + value_Params[0]);
-// const compareSecondValue = (cellText + currentOperator[1] + value_Params[1]);
-// console.log('compareFirstValue: ' + compareFirstValue)
-// console.log('compareSecondValue: '+ compareSecondValue)
-// const compareThirdValue = (cellText + currentOperator[1] + currentvalueParams[2]);
-// const compareFourthValue = (cellText + currentOperator[1] + currentvalueParams[3]);
-// const compareFifthValue = (cellText + currentOperator[1] + currentvalueParams[4]);
-// if (compareFirstValue) {
-// console.log('first target: '+target[0]);
-//         };
-// }
-// console.log(cellText + currentOperator[0] + currentvalueParams[0]);
-// testingCondition()
+            $('agent-ease')
+        if (cellText + op1[0] + valueParams[0]) {
+        condition = high[0];
+} else if (cellText + op1[0] + valueParams[1]) {
+        condition = high[1];
+} else if (cellText + op1[0] + valueParams[2]) {
+        condition = high[2];
+} else if (cellText + op1[0] + valueParams[3]) {
+        condition = high[3];
+} else if (cellText + op1[0] + valueParams[4]) {
+        condition = high[4];
+} else {condition = undefined};
+
+        testingCondition()

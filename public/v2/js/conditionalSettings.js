@@ -81,16 +81,3 @@ var setup = [{
     className: "metric-6"
   }
 ];
-
-// commit to DB?
-
-// Sets conditional logic:
-
-// function (variableTarget {
-// });
-
-// function (nextCondition {
-// const currentConditions = (currentCondition, currentOperator, currentTarget, currentValueParams, currentTitle);
-// var nextCondition = new nextCondition(Condition, Operator, Target, ValueParams, Title);
-// currentConditions.changeCondition(nextCondition);
-// });

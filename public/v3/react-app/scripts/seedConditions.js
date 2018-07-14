@@ -11,7 +11,6 @@ mongoose.connect(
 );
 
 const conditionSeed = [{
-
     highoperator: ['>=', '<', '>'],
     lowoperator: ['<=', '>', '<'],
     equals: ['='],
@@ -20,7 +19,6 @@ const conditionSeed = [{
     hightarget: ['excellent', 'effective', 'average', 'improvable', 'unacceptable'],
     lowtarget: ['unacceptable', 'improvable', 'average', 'effective', 'excellent'],
     booltarget: ['pass', 'fail']
-
 }];
 
 db.Condition

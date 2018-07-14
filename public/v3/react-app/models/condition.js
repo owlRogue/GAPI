@@ -1,12 +1,34 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const conditionSchema = new Schema({ 
-  default: { type: Number, required: true },
-  bool: { type: Boolean, required: true },
-  custom: { type: Array }
+const conditionSchema = new Schema({
+
+
+  valueParams: [{
+    condition: String,
+    numbers: Array
+  }],
+
+  operator: [{
+    condition: String,
+    op1: String,
+    // required: true
+    op2: String,
+    // required: true
+    custom: Array
+  }],
+  target: [{
+    condition: String,
+    high: String,
+    // required: true,
+    low: String,
+    // required: true,
+    bool: String,
+    // required: true
+  }]
+
 });
 
-const Metrics = mongoose.model("condition", conditionSchema);
+const Condition = mongoose.model("condition", conditionSchema);
 
 module.exports = Condition;

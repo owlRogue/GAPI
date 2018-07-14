@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import DeleteBtn from "../../components/DeleteBtn";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, FormBtn } from "../../components/Form";
@@ -14,7 +14,8 @@ class Sheets extends Component {
     sheets: [],
     title: "",
     gid: "",
-    range: ""
+    range: "",
+    url: ""
   };
 
   componentDidMount() {
@@ -24,7 +25,7 @@ class Sheets extends Component {
   loadSheets = () => {
     API.getSheets()
       .then(res =>
-        this.setState({ sheets: res.data, title: "", gid: "", range: "" })
+        this.setState({ sheets: res.data, title: "", gid: "", range: "" , url: ""})
       )
       .catch(err => console.log(err));
   };
@@ -105,12 +106,12 @@ class Sheets extends Component {
                     // <div> {sheet.url} + {sheet.gid}
                     // </div>
                   <ListItem key={sheet._id}>
-                    <Link to={"/sheets/" + sheet._id}>
+                    {/* <Link to={"/sheets/" + sheet._id}> */}
                       <strong>
                         {sheet.title}
                         {/* {sheet.gid} */}
                       </strong>
-                    </Link>
+                    {/* </Link> */}
                     <DeleteBtn onClick={() => this.deleteSheet(sheet._id)} />
                   </ListItem>
                 ))}

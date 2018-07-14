@@ -5,7 +5,7 @@ const sheetSchema = new Schema({
   title: { type: String, required: true },
   gid: { type: String, required: true },
   range: { type: String, required: true },
-  url: { type: URL, required: true },
+  url: { type: String, required: false },
   date_added: { type: Date, default: Date.now }
 });
 

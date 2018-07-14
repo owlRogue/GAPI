@@ -11,56 +11,54 @@ mongoose.connect(
 );
 
 
-var metricSeed = [{
-  metric: "metric-1",
-  operator: operators["op1"],
-  target: target["high"],
-  valueParams: [90, 80, 70, 60],
-  className: "metric-1"
-},
-{
-  metric: "metric-2",
-  operator: operators["op1"],
-  target: target["high"],
-  valueParams: [9.8, 9.3, 8.8, 7.0],
-  className: "metric-2"
-},
+var metricSeed = [
 
-{
-  metric: "metric-3",
-  operator: operators["op1"],
-  target: target["low"],
-  valueParams: [8.8, 7.3, 6.8, 5.0],
-  className: "metric-3"
-},
+  (metric1 = {
+    operator: operators["op1"],
+    target: target["high"],
+    valueParams: [90, 80, 70, 60],
+    className: "metric-1"
+  }),
 
-{
-  metric: "metric-4",
-  operator: operators["op1"],
-  target: target["low"],
-  valueParams: [40, 30, 20, 17],
-  className: "metric-4"
-},
+  (metric2 = {
+    operator: operators["op1"],
+    target: target["high"],
+    valueParams: [9.8, 9.3, 8.8, 7.0],
+    className: "metric-2"
+  }),
 
-{
-  metric: "metric-5",
-  operator: operators["op1"],
-  target: target["low"],
-  valueParams: [600, 720, 840, 1050],
-  className: "metric-5"
-},
+  (metric3 = {
+    operator: operators["op1"],
+    target: target["low"],
+    valueParams: [8.8, 7.3, 6.8, 5.0],
+    className: "metric-3"
+  }),
 
-{ metric: "metric-6",
-  operator: operators["op1"],
-  target: target["bool"],
-  valueParams: [99.0],
-  className: "metric-6"
-}
+  (metric4 = {
+    operator: operators["op1"],
+    target: target["low"],
+    valueParams: [40, 30, 20, 17],
+    className: "metric-4"
+  }),
+
+  (metric5 = {
+    operator: operators["op1"],
+    target: target["low"],
+    valueParams: [600, 720, 840, 1050],
+    className: "metric-5"
+  }),
+
+  (metric6 = {
+    operator: operators["op1"],
+    target: target["bool"],
+    valueParams: [99.0],
+    className: "metric-6"
+  })
 ];
 console.log(metricSeed);
-db.Conditions
+db.Metric
   .remove({})
-  .then(() => db.Conditions.collection.insertMany(metricSeed))
+  .then(() => db.Metric.collection.insertMany(metricSeed))
   .then(data => {
     console.log(data.insertedIds.length + " records inserted!");
     process.exit(0);

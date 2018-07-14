@@ -27,54 +27,57 @@ var settings = [
   })
 ];
 
-var setup = [
-  (fcr = {
+var setup = [{
+    metric: "metric 1",
     condition: conditions["default"],
     operator: operators["op1"],
     target: "high",
     valueParams: [90, 80, 70, 60],
-    className: "7-day-call-fcr"
-  }),
-
-  (agent_ease = {
+    className: "metric-1"
+  },
+  {
+    metric: "metric 2",
     condition: conditions["default"],
     operator: operators["op1"],
     target: "high",
     valueParams: [9.8, 9.3, 8.8, 7.0],
-    className: "agent-ease"
-  }),
+    className: "metric-2"
+  },
 
-  (replacement_rate = {
+  {
+    metric: "metric-3",
     condition: conditions["default"],
     operator: operators["op1"],
     target: "low",
     valueParams: [8.8, 7.3, 6.8, 5.0],
-    className: "replacement-rate"
-  }),
+    className: "metric-3"
+  },
 
-  (aux = {
+  {
+    metric: "metric-4",
     condition: conditions["default"],
     operator: operators["op1"],
     target: "low",
     valueParams: [40, 30, 20, 17],
-    className: "aux"
-  }),
+    className: "metric-4"
+  },
 
-  (aht = {
+  {
+    metric: "metric-5",
     condition: conditions["default"],
     operator: operators["op1"],
     target: "low",
     valueParams: [600, 720, 840, 1050],
-    className: "aht"
-  }),
+    className: "metric-5"
+  },
 
-  (deltacast = {
+  { metric: "metric-6",
     condition: conditions["bool"],
     operator: operators["op1"],
     target: "bool",
     valueParams: [99.0],
-    className: "deltacast"
-  })
+    className: "metric-6"
+  }
 ];
 
 // Sets conditional logic:

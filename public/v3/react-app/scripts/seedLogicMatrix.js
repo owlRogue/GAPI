@@ -14,26 +14,25 @@ const matrixSeed = [
 
     // (conditions = 
     {
-      default: "['1', '2', '3', '4', '5']",
-      bool: "['pass', 'fail']",
+      valueParams: [],
       custom: []
     }
-    // )
-    // ,
-    // (operators = {
-    //   op1: ['>=', '<', '>'],
-    //   op2: ['<=', '>', '<'],
-    //   custom: []
-    // }),
-    // (target = {
-    //   high: ['exceptional', 'effective', 'achieves', 'NI', 'unacceptable'],
-    //   low: ['unacceptable', 'NI', 'achieves', 'effective', 'exceptional'],
-    //   bool: ['pass', 'fail']
-    // }),
+    )
+    ,
+    (operators = {
+      op1: ['>=', '<', '>'],
+      op2: ['<=', '>', '<'],
+      custom: []
+    }),
+    (target = {
+      high: ['exceptional', 'effective', 'achieves', 'NI', 'unacceptable'],
+      low: ['unacceptable', 'NI', 'achieves', 'effective', 'exceptional'],
+      bool: ['pass', 'fail']
+    }),
 
-    // (valueParam = {
-    //   vP: []
-    // })
+    (valueParam = {
+      vP: []
+    })
   ];
 
 // db.LogicMatrix

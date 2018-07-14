@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const db = require("../models");
 mongoose.Promise = global.Promise;
 
-// This file empties the Sheets collection and inserts the sheets below
+// This file empties the Conditionss collection and inserts the sheets below
 
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/reportplatform", {
@@ -10,60 +10,57 @@ mongoose.connect(
   }
 );
 
-var setup = [
-  (fcr = {
-    condition: conditions["default"],
-    operator: operators["op1"],
-    target: "high",
-    valueParams: [90, 80, 70, 60],
-    className: "7-day-call-fcr"
-  }),
 
-  (agent_ease = {
-    condition: conditions["default"],
-    operator: operators["op1"],
-    target: "high",
-    valueParams: [9.8, 9.3, 8.8, 7.0],
-    className: "agent-ease"
-  }),
+var setup = [{
+  metric: "metric 1",
+  operator: operators["op1"],
+  target: "high",
+  valueParams: [90, 80, 70, 60],
+  className: "metric-1"
+},
+{
+  metric: "metric 2",
+  operator: operators["op1"],
+  target: "high",
+  valueParams: [9.8, 9.3, 8.8, 7.0],
+  className: "metric-2"
+},
 
-  (replacement_rate = {
-    condition: conditions["default"],
-    operator: operators["op1"],
-    target: "low",
-    valueParams: [8.8, 7.3, 6.8, 5.0],
-    className: "replacement-rate"
-  }),
+{
+  metric: "metric-3",
+  operator: operators["op1"],
+  target: "low",
+  valueParams: [8.8, 7.3, 6.8, 5.0],
+  className: "metric-3"
+},
 
-  (aux = {
-    condition: conditions["default"],
-    operator: operators["op1"],
-    target: "low",
-    valueParams: [40, 30, 20, 17],
-    className: "aux"
-  }),
+{
+  metric: "metric-4",
+  operator: operators["op1"],
+  target: "low",
+  valueParams: [40, 30, 20, 17],
+  className: "metric-4"
+},
 
-  (aht = {
-    condition: conditions["default"],
-    operator: operators["op1"],
-    target: "low",
-    valueParams: [600, 720, 840, 1050],
-    className: "aht"
-  }),
+{
+  metric: "metric-5",
+  operator: operators["op1"],
+  target: "low",
+  valueParams: [600, 720, 840, 1050],
+  className: "metric-5"
+},
 
-  (deltacast = {
-    condition: conditions["bool"],
-    operator: operators["op1"],
-    target: "bool",
-    valueParams: [99.0],
-    className: "deltacast"
-  })
+{ metric: "metric-6",
+  operator: operators["op1"],
+  target: "bool",
+  valueParams: [99.0],
+  className: "metric-6"
+}
 ];
-
-
-db.Sheet
+console.log(setup);
+db.Conditions
   .remove({})
-  .then(() => db.Sheet.collection.insertMany(setup))
+  .then(() => db.Conditions.collection.insertMany(setup))
   .then(data => {
     console.log(data.insertedIds.length + " records inserted!");
     process.exit(0);

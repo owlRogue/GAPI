@@ -13,8 +13,9 @@ mongoose.connect(
 
 var metricSeed = [
 
-  (metric1 = {
-    operator: operators["op1"],
+    [{
+    metric: metric1,
+    operator: operator.op1,
     target: target["high"],
     valueParams: [90, 80, 70, 60],
     className: "metric-1"

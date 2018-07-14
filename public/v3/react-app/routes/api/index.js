@@ -5,5 +5,7 @@ const conditionRoutes = require("./conditions");
 
 // Sheet routes
 router.use("/sheets", sheetRoutes);
+router.use("/metrics", metricRoutes);
+router.use("/conditions", conditionRoutes);
 
 module.exports = router;

@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const matrixSchema = new Schema({ 
   default: { type: Number, required: true },
-  bool: { type: String, required: true },
+  bool: { type: Boolean, required: true },
   custom: { type: Array }
 });
 

@@ -22,4 +22,3 @@ export default {
     return axios.get("/api/logicmatrix");
   }
 };
-console.log(axios.get("/api/logicmatrix"));

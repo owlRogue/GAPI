@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
+import { List, ListItem } from "../../components/List";
 // import Table from "../Detail/Table";
 
 class Detail extends Component {
@@ -30,16 +31,17 @@ class Detail extends Component {
           </Col>
         </Row>
 
-        {/* 
+        
         <Row>
           <Col size="md-10 md-offset-1">
-              <h1>Table</h1>
+              <h1>GSheet Link</h1>
               <List>
-                {this.state.sheet.data}
+              <ListItem>{"url: "+this.state.sheet.url} + {this.state.sheet.gid};</ListItem>
+              <ListItem>{"range: "+this.state.sheet.range}</ListItem>
               </List>
           </Col>
         </Row> 
-        */}
+       
 
         <Row>
           <Col size="md-10 md-offset-1">

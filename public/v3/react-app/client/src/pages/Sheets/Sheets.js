@@ -97,13 +97,18 @@ class Sheets extends Component {
               <h1>Report List</h1>
             </Jumbotron>
             
+
+            {/* // MOVE THESE TO NAVBAR:: */}
             {this.state.sheets.length ? (
               <List>
                 {this.state.sheets.map(sheet => (
+                    // <div> {sheet.url} + {sheet.gid}
+                    // </div>
                   <ListItem key={sheet._id}>
                     <Link to={"/sheets/" + sheet._id}>
                       <strong>
                         {sheet.title}
+                        {/* {sheet.gid} */}
                       </strong>
                     </Link>
                     <DeleteBtn onClick={() => this.deleteSheet(sheet._id)} />

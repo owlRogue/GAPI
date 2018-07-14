@@ -1,6 +1,7 @@
 import React from "react";
 import "./Navbar.css";
 import "./SignInBtn.css";
+// import { List, ListItem } from "../../components/List";
 // import API from "../../utils/API";
 // import ___ from "../../utils/OAuth";
 // import Sheets from "../../pages/Sheets/Sheets";
@@ -15,16 +16,12 @@ const Nav = () => (
       Reporting Platform
     </a>
 
-    <button>
     <GoogleLogin
         className="googleButton" />
+    
         
-        </button>
         
 
-        {/* <button
-        className="googleButton2">
-        </button> */}
 
   </nav>
 );
@@ -32,5 +29,3 @@ const Nav = () => (
 export default Nav;
 
 
-
-        

@@ -12,21 +12,23 @@ mongoose.connect(
 
 const matrixSeed = [
 
-    (conditions = {
-      default: ["1", "2", "3", "4", "5"],
-      bool: ["pass", "fail"],
+    // (conditions = 
+    {
+      default: "['1', '2', '3', '4', '5']",
+      bool: "['pass', 'fail']",
       custom: []
-    })
+    }
+    // )
     // ,
     // (operators = {
-    //   op1: [">=", "<", ">"],
-    //   op2: ["<=", ">", "<"],
+    //   op1: ['>=', '<', '>'],
+    //   op2: ['<=', '>', '<'],
     //   custom: []
     // }),
     // (target = {
-    //   high: ["exceptional", "effective", "achieves", "NI", "unacceptable"],
-    //   low: ["unacceptable", "NI", "achieves", "effective", "exceptional"],
-    //   bool: ["pass", "fail"]
+    //   high: ['exceptional', 'effective', 'achieves', 'NI', 'unacceptable'],
+    //   low: ['unacceptable', 'NI', 'achieves', 'effective', 'exceptional'],
+    //   bool: ['pass', 'fail']
     // }),
 
     // (valueParam = {
@@ -34,9 +36,10 @@ const matrixSeed = [
     // })
   ];
 
-db.LogicMatrix
-  .remove({})
-  .then(() => db.LogicMatrix.collection.insertMany(matrixSeed))
+// db.LogicMatrix
+  // .remove({})
+  // .then(() => 
+db.LogicMatrix.collection.insertMany(matrixSeed)
   .then(data => {
     console.log(data.insertedIds.length + " records inserted!");
     process.exit(0);
@@ -44,4 +47,5 @@ db.LogicMatrix
   .catch(err => {
     console.error(err);
     process.exit(1);
-  });
+  })
+// );

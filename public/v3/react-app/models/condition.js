@@ -32,3 +32,5 @@ const conditionSchema = new Schema({
 const Condition = mongoose.model("condition", conditionSchema);
 
 module.exports = Condition;
+
+// valueParams.numbers here should = valueParams in metric collection

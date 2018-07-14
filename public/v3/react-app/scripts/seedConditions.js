@@ -10,26 +10,18 @@ mongoose.connect(
   }
 );
 
-const conditionSeed = [
+const conditionSeed = [{
 
-  (valueParams = {
-    condition: "valueParams",
-    numbers: [],
-  }),
-  (operator = {
-    condition: "operator",
-    op1: ['>=', '<', '>'],
-    op2: ['<=', '>', '<'],
-    custom: []
-  }),
-  (target = {
-    condition: "target",
-    high: ['exceptional', 'effective', 'achieves', 'NI', 'unacceptable'],
-    low: ['unacceptable', 'NI', 'achieves', 'effective', 'exceptional'],
-    bool: ['pass', 'fail']
-  }),
+    highoperator: ['>=', '<', '>'],
+    lowoperator: ['<=', '>', '<'],
+    equals: ['='],
+    ampersand: ['&&'],
+    orpipes: ['||'],
+    hightarget: ['excellent', 'effective', 'average', 'improvable', 'unacceptable'],
+    lowtarget: ['unacceptable', 'improvable', 'average', 'effective', 'excellent'],
+    booltarget: ['pass', 'fail']
 
-];
+}];
 
 db.Condition
   .remove({})

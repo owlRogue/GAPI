@@ -13,4 +13,4 @@ const Metric = mongoose.model("metric", metricSchema);
 
 module.exports = Metric;
 
-// valueParams here should = valueParams in Condition table
+// valueParams here should = valueParams in condition collection

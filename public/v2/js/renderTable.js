@@ -1,113 +1,107 @@
-    // Push Data to table:
-    function renderTable(tableData) {
-        $('#input-filters').removeClass('hide');
+console.log("6: renderTable.js loaded");
 
-        const table = document.getElementById("tableBody");
-        const tableHead = document.getElementById("headerRow");
+// Push Data to table:
+function renderTable(tableData) {
+    $('#input-filters').removeClass('hide');
 
-        tableData.forEach((data, i) => {
-            if (i === 0) {
-                for (const titleItem of data) {
-                    tableHead.insertCell().append(titleItem);
-                }
+    const table = document.getElementById("tableBody");
+    const tableHead = document.getElementById("headerRow");
 
-            } else {
-                const row = table.insertRow();
-                for (const dataItem of data) {
-                    row.insertCell().append(dataItem);
-                }
+    tableData.forEach((data, i) => {
+        if (i === 0) {
+            for (const titleItem of data) {
+                tableHead.insertCell().append(titleItem);
             }
-        });
 
-        // Assign classes to arrays:
-        const dimension = ['date range', 'date interval', 'location: most recent', 'manager: most recent', 'position: most recent', 'supervisor: most recent', 'supervisor: historical', 'agent name', 'agent email'];
-        const formattedmetric = ['7 day call fcr', 'agent ease', 'replacement rate', 'aux %', 'aht', 'deltacast %', 'replacements and oneoffs per unique tickets updated by updater'];
-        const extrametrics = [];
-        const dimensionDiv$ = $('#dimension-filters');
-        const metricDiv$ = $('#metric-filters');
-        const classNames = [];
-        const idNames = [];
-        let fieldType = 'indextitle';
-        let hyph;
-        let cleaned;
+        } else {
+            const row = table.insertRow();
+            for (const dataItem of data) {
+                row.insertCell().append(dataItem);
+            }
+        }
 
-        let headerCell$ = $('thead td'); // console.log(headerCell$);
-        // let bodyCell$ = $('tbody td'); // console.log(bodyCell$);
-        // let bodyRow$ = $('tbody tr'); // console.log(bodyRow$);
-        let searchKey$ = $('.search-key'); // console.log(searchKey$);
-        // let input$; // console.log(input$);
+    });
 
-        $(headerCell$).each(function (i) {
+    // Assign classes to arrays:
+    const dimension = ['date range', 'date interval', 'location: most recent', 'manager: most recent', 'position: most recent', 'supervisor: most recent', 'supervisor: historical', 'agent name', 'agent email'];
+    const formattedmetric = ['7 day call fcr', 'agent ease', 'replacement rate', 'aux %', 'aht', 'deltacast %', 'replacements and oneoffs per unique tickets updated by updater'];
+    const extrametrics = [];
+    const classNames = [];
+    const idNames = [];
+    let fieldType = 'indextitle';
+    let hyph;
+    let cleaned;
 
-            const headers = $('thead td')
-                .addClass('indextitle')
-            if (dimension.includes(this.innerHTML)) {
-                fieldType = 'dimension';
-            } else if (formattedmetric.includes(this.innerHTML)) {
-                fieldType = 'formatted-metric';
-            } else {
-                fieldType = this.innerHTML;
-                extrametrics.push(fieldType);
-                extrametric = 'extrametric';
+    let headerCell$ = $('thead td'); // console.log(headerCell$);
+    // let bodyCell$ = $('tbody td'); // console.log(bodyCell$);
+    // let bodyRow$ = $('tbody tr'); // console.log(bodyRow$);
+    let searchKey$ = $('.search-key'); // console.log(searchKey$);
+    // let input$ = $('input'); // console.log(input$);
+
+
+    $(headerCell$).each(function (i) {
+        const headers = $('thead td');
+        const celldata = this.innerHTML;
+
+        $(headers[i]).attr("row", "0");
+        $(headers[i]).attr("name", celldata);
+        $(headers[i]).addClass('indextitle');
+
+        if (dimension.includes(celldata)) {
+            fieldType = 'dimension';
+
+        } else if (formattedmetric.includes(celldata)) {
+            fieldType = 'formatted-metric';
+
+        } else {
+            $(this).addClass('extrametric')
+            fieldType = 'extrametric'
+            extrametrics.push(celldata);
+        };
+        $(headers[i]).attr("fieldtype", fieldType);
+
+
+        // Assign metric title, data-type, and column headers and cells:
+        cleaned = $(this).text()
+            .replace(/[%:-]/g, '')
+            .trim()
+            .replace(/ /g, '');
+        idNames.push(cleaned[i]);
+        $(headers[i]).attr("cleaned-name", cleaned);
+
+        hyph = $(this).text()
+            .replace(/[%:]/g, '')
+            .trim()
+            .replace(/ /g, '-');
+        $(headers[i]).attr("hyph", hyph);
+
+        classNames.push(hyph[i]);
+        $(this).addClass(hyph +
+            ' ' + fieldType +
+            ' ' + i);
+
+        // ENABLE NEXT LINE IN ORDER TO ALSO TAG ROWS:
+        startCol = i + 1;
+        $('tbody td:nth-child(' + startCol + ')').addClass(hyph +
+            ' ' +
+            fieldType +
+            ' ' + i);
+
+    });
+    // console.log("These metrics do not have conditional formatting rules: " + extrametrics);
+    // console.log(extrametrics);
+
+    // Call sortTable function to sort column on header click:
+    const cells = $('thead').find('td');
+    cells.each(function (i) {
+        cells[i].onclick = (function (n) {
+            return function () {
+                sortTable(n);
             };
-
-            // Assign metric title, data-type, and column headers and cells:
-            cleaned = $(this).text()
-                .replace(/[%:-]/g, '')
-                .trim()
-                .replace(/ /g, '');
-            idNames.push(cleaned[i]);
-
-            hyph = $(this).text()
-                .replace(/[%:]/g, '')
-                .trim()
-                .replace(/ /g, '-');
-
-            classNames.push(hyph[i]);
-            $(this).addClass(hyph + ' ' + fieldType + ' ' + i);
-            // $('tbody td:nth-child(' + startCol + ')').addClass(hyph + ' ' + fieldType + ' ' + i);
-
-        });
+        })(i);
+    });
 
 
-        $(headerCell$).each(function (i) {
-            const search = $('<input>')
-                .addClass('search-key')
-                .appendTo(dimensionDiv$)
-                .attr('type', 'text')
-                .attr('name', $(this).text())
-                .attr('id', 'tableInput' + [i])
-                .attr('placeholder', 'search by ' + $(this).text().replace(/[%:]/g, '').trim())
-                .attr('onkeyup', 'searchAll()')
-                .addClass($(this).text().replace(/[%: ]/g, '').trim() + 'Filter');
-            // .addClass(fieldType)
-            // .addClass(hyph);
+};
 
-
-            $(searchKey$).each(function (i) {
-                const dimensionFilter$ = $('.dimension')
-                $(dimensionFilter$).appendTo(dimensionDiv$);
-
-                const metricFilter$ = $('.metric')
-                $(metricFilter$).appendTo(metricDiv$);
-
-                // const extrametricFilter = $('.extrametric')
-                // $(extrametricFilter).appendTo(metricDiv$);
-
-                // } else if (formattedmetric.includes(this.innerHTML)) {
-                //     $(filter$).appendTo('#metric-filters');
-                // } else {
-                //     $(filter$).appendTo('#input-filters');
-                // } if ($(filter).hasClass('metric-filter')){
-                //         $(filter).appendTo(metricDiv$);
-                // };
-            });
-        });
-
-        $(headerCell$).each(function (i) {
-            if ($(this).hasClass('extrametric')) {
-                console.log(this.innerHTML); // ERROR CHECK COMPONENT // DO NOT DELETE <<<<< <<< <
-            }
-        });
-
-    }; // END RENDER TABLE;
+renderFilters();

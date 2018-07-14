@@ -11,7 +11,10 @@
     "seed": "node scripts/seedSheets.js scripts/seedLogicMatrix.js scripts/seedConditions.js",
     "install": "cd client && yarn install",
     "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "server": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "yarn build && git add . && git commit -m \"Building for production\" && git push heroku master"
   },
   "author": "",
   "license": "ISC",

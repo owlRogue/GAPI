@@ -1,3 +1,5 @@
+console.log("2: conditionalSettings.js loaded");
+
 // let KPI;
 let currentCondition;
 let currentOperator;
@@ -79,6 +81,8 @@ var setup = [{
     className: "metric-6"
   }
 ];
+
+// commit to DB?
 
 // Sets conditional logic:
 

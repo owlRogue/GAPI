@@ -1,3 +1,5 @@
+console.log("8: sortTable.js loaded");
+
 // Call sortTable function to sort column on header click:
 
 const cells = $('thead').find('td');

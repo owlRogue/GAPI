@@ -5,9 +5,8 @@ import { GoogleLogin } from "react-google-login";
 // import { Report1 } from "SwitchBtn";
 
 
-export const Nav = ({ children }) => {
+export const Nav = ({ whatgoeshere }) => {
   return (
-    // <Nav>
     <nav className="navbar navbar-dark">
         <a className="navbar-brand" href="/">
       Reporting Platform

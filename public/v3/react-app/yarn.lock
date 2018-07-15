@@ -263,6 +263,10 @@ cache-base@^1.0.1:
     union-value "^1.0.0"
     unset-value "^1.0.0"
 
+camelcase@5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-5.0.0.tgz#03295527d58bd3cd4aa75363f35b2e8d97be2f42"
+
 camelcase@^1.0.2:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-1.2.1.tgz#9bb5304d2e0b56698b2c758b08a3eaa9daa58a39"
@@ -1166,7 +1170,7 @@ isobject@^3.0.0, isobject@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
 
-isomorphic-fetch@^2.1.1:
+isomorphic-fetch@^2.1.1, isomorphic-fetch@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz#611ae1acf14f5e81f729507472819fe9733558a9"
   dependencies:
@@ -1838,6 +1842,13 @@ react-google-login@^3.2.1:
   dependencies:
     "@types/react" "*"
     prop-types "^15.6.0"
+
+react-google-sheets@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/react-google-sheets/-/react-google-sheets-0.4.0.tgz#67987e4f8cc31d54a79aa38d64f104c2e2785f06"
+  dependencies:
+    camelcase "5.0.0"
+    isomorphic-fetch "^2.2.1"
 
 react-is@^16.3.2:
   version "16.4.1"

@@ -7,23 +7,22 @@ import { GoogleLogin } from "react-google-login";
 
 export const Nav = ({ children }) => {
   return (
-    <Nav>
+    // <Nav>
     <nav className="navbar navbar-dark">
         <a className="navbar-brand" href="/">
       Reporting Platform
     </a>
     {/* <List> */}
-      <ul 
+      {/* <ul 
       className="list-group">
         {children}
-      </ul>
+      </ul> */}
       {/* </List> */}
       <GoogleLogin
           className="googleButton" />
       {/* <Report1
           className="switchreportButton" /> */}
           </nav>
-    </Nav>
   );
 };
 

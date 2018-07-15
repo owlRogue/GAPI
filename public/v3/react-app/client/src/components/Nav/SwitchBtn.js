@@ -3,16 +3,16 @@ import ReactDOM from 'react-dom';
 // import GoogleLogin from 'react-google-login'; 
 // import { GoogleLogin } from 'react-google-login';
 
-export const responseGoogle = (response) => {
+export const getSheet = (response) => {
   console.log(response);
 }
   
 ReactDOM.render(
   <Report1
-    // clientId={'208109669255-s9hf7ile0omkkivpcm6plpdiagn4ccl6.apps.googleusercontent.com'}
-    buttonText="Report1"
-    // onSuccess={responseGoogle}
-    // onFailure={responseGoogle}
+    sheetId={sheet.__id}
+    buttonText={sheet.title}
+    onSuccess={getSheet}
+    onFailure={missingReport}
   />,
   document.getElementById('switchreportButton')
 );

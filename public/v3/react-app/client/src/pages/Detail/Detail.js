@@ -4,6 +4,7 @@ import { Col, Row, Container } from "../../components/Grid";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import { List, ListItem } from "../../components/List";
+// import { Table } from "../../components/Table";
 
 class Detail extends Component {
   state = {
@@ -38,7 +39,8 @@ class Detail extends Component {
           <Col size="md-10 md-offset-1">
               <h1>GSheet Link</h1>
               <List>
-              <ListItem>{"url: "+this.state.sheet.url} + {this.state.sheet.gid};</ListItem>
+              <ListItem>{"url: "+this.state.sheet.url}{this.state.sheet.gid}
+              </ListItem>
               <ListItem>{"range: "+this.state.sheet.range}</ListItem>
               </List>
           </Col>
@@ -55,6 +57,13 @@ class Detail extends Component {
             </article>
           </Col>
         </Row>
+
+        {/* <Row> */}
+          {/* <Table> */}
+
+            {/* </Table> */}
+          {/* </Row> */}
+
         <Row>
           <Col size="md-2">
             <Link to="/">← Back to Report List</Link>

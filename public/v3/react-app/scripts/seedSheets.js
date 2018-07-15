@@ -19,15 +19,15 @@ const sheetSeed = [
     // date: new Date(Date.now())
   },
   {
-    title: 'Data Bunch 1',
+    title: 'Data Bunch 1: Sheet1',
     gid: '1KbuidBzpeH_i6X-1QoXgxcyi2PoldMyiBtqvRX_OuAQ',
-    range: "['A1:ZZ200']",
+    range: "['Sheet1:A1:ZZ200']",
     url: "https://docs.google.com/spreadsheets/d/"
   },
   {
-    title: 'Insert sheet title',
-    gid: 'INSERT SHEET ID FROM URL',
-    range: "['INSERT RANGE']",
+    title: 'Data Bunch 1: Sheet2',
+    gid: '1KbuidBzpeH_i6X-1QoXgxcyi2PoldMyiBtqvRX_OuAQ',
+    range: "['Sheet2!A1:AZ200']",
     url: "https://docs.google.com/spreadsheets/d/"
   },
   {

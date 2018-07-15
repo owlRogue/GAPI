@@ -29,6 +29,7 @@
     "chart.js": "^2.7.2",
     "express": "^4.15.4",
     "if-env": "^1.0.4",
+    "lodash": "^4.17.10",
     "mongoose": "^5.0.17",
     "node-looker-api": "^3.1.9",
     "react": "^16.4.1",

@@ -13,51 +13,51 @@ mongoose.connect(
 var metricSeed = [
 
   {
-    metric: "metric 1",
-    operator: conditionSeed.op1,
-    target: "high",
+    metric: 'metric 1',
+    operator: 'op1',
+    target: 'high',
     valueParams: [90, 80, 70, 60],
-    className: "metric-1"
+    className: 'metric-1'
   },
 
   {
-    metric: "metric 2",
-    operator:" op1",
-    target: "high",
+    metric: 'metric 2',
+    operator: 'op1',
+    target: 'high',
     valueParams: [9.8, 9.3, 8.8, 7.0],
-    className: "metric-2"
+    className: 'metric-2'
   },
 
   {
-    metric: "metric 3",
-    operator:" op2",
-    target: "low",
+    metric: 'metric 3',
+    operator: 'op2',
+    target: 'low',
     valueParams: [8.8, 7.3, 6.8, 5.0],
-    className: "metric-3"
+    className: 'metric-3'
   },
 
   {
-    metric: "metric 4",
-    operator: "op2",
-    target: "low",
+    metric: 'metric 4',
+    operator: 'op2',
+    target: 'low',
     valueParams: [40, 30, 20, 17],
-    className: "metric-4"
+    className: 'metric-4'
   },
 
   {
-    metric: "metric 5",
-    operator: "bool",
-    target: "bool",
+    metric: 'metric 5',
+    operator: 'bool',
+    target: 'bool',
     valueParams: [600, 720, 840, 1050],
-    className: "metric-5"
+    className: 'metric-5'
   },
 
   {
-    metric: "metric 6",
-    operator: "bool",
-    target: "bool",
+    metric: 'metric 6',
+    operator: 'bool',
+    target: 'bool',
     valueParams: [99.0],
-    className: "metric-6"
+    className: 'metric-6'
   }
 ];
 

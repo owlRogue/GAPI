@@ -4,10 +4,10 @@ const Schema = mongoose.Schema;
 const conditionSchema = new Schema({
 
 
-  valueParams: [{
-    condition: String,
-    numbers: Array
-  }],
+  // valueParams: [{
+  //   condition: String,
+  //   numbers: Array
+  // }],
 
   operator: [{
     condition: String,

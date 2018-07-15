@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import GoogleLogin from 'react-google-login'; 
 // import { GoogleLogin } from 'react-google-login';
- 
-const responseGoogle = (response) => {
+
+export const responseGoogle = (response) => {
   console.log(response);
 }
   
@@ -18,3 +18,4 @@ ReactDOM.render(
 );
 
 // https://developers.google.com/identity/sign-in/web/sign-in
+

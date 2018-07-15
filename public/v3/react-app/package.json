@@ -26,10 +26,13 @@
   "dependencies": {
     "axios": "^0.16.2",
     "body-parser": "^1.17.2",
+    "chart.js": "^2.7.2",
     "express": "^4.15.4",
     "if-env": "^1.0.4",
     "mongoose": "^5.0.17",
+    "node-looker-api": "^3.1.9",
     "react": "^16.4.1",
+    "react-bootstrap": "^0.32.1",
     "react-dom": "^16.4.1",
     "react-google-login": "^3.2.1"
   }

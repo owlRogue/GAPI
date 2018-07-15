@@ -4,7 +4,6 @@ import { Col, Row, Container } from "../../components/Grid";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import { List, ListItem } from "../../components/List";
-// import Table from "../Detail/Table";
 
 class Detail extends Component {
   state = {
@@ -19,6 +18,9 @@ class Detail extends Component {
   }
 
   render() {
+
+
+    
     return (
       <Container fluid>
         <Row>

@@ -62,8 +62,8 @@ class Sheets extends Component {
         <Row>
           <Col size="md-6">
             <Jumbotron>
-              <h2>Add a Google Sheet ID to View a Visual Representation of your Data</h2>
-              <h3>Coming soon: Link any non-nested JSON API endpoint!</h3>
+              <h2>Add a Google Sheet ID</h2>
+              <h3>Soon, link any non-nested JSON endpoint!</h3>
             </Jumbotron>
             <form>
               <Input

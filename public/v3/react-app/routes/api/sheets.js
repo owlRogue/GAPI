@@ -13,4 +13,10 @@ router
   .put(sheetsController.update)
   .delete(sheetsController.remove);
 
+ router
+  .route("/:title")
+  .get(sheetsController.findByTitle)
+  .put(sheetsController.update)
+  .delete(sheetsController.remove);
+
 module.exports = router;

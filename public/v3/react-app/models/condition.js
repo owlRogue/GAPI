@@ -3,12 +3,6 @@ const Schema = mongoose.Schema;
 
 const conditionSchema = new Schema({
 
-
-  // valueParams: [{
-  //   condition: String,
-  //   numbers: Array
-  // }],
-
   operator: [{
     condition: String,
     op1: String,

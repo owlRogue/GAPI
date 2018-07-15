@@ -4,7 +4,7 @@ import { Col, Row, Container } from "../../components/Grid";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import { List, ListItem } from "../../components/List";
-// import { Table } from "../../components/Table";
+import { Table } from "../../components/Table";
 
 class Detail extends Component {
   state = {
@@ -55,14 +55,15 @@ class Detail extends Component {
                 {this.state.sheet.data}
               </p>
             </article>
+            <Table columns={this.state.sheet} data={this.state.sheet.title}/>;
           </Col>
         </Row>
 
-        {/* <Row> */}
-          {/* <Table> */}
-
-            {/* </Table> */}
-          {/* </Row> */}
+        <Row>
+          <Table>
+              
+            </Table>
+          </Row>
 
         <Row>
           <Col size="md-2">

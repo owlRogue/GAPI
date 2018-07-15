@@ -10,44 +10,60 @@ mongoose.connect(
   }
 );
 
-const conditionSeed = [{
+const conditionSeed = [
+  {
+    bool_target: [{
+      greater_eq: '>=',
+      less_eq: '<='
+    }]
+  },
 
-  bool_target: [{
-    greater_eq: '>=',
-    less_eq: '<='
-  }],
+  {
+    high_operator: [{
+      greater_eq: '>=',
+      less_than: '<',
+      greater_than: '>',
+      equals: '='
+    }]
+  },
 
-  high_operator: [{
-    greater_eq: '>=',
-    less_than: '<',
-    greater_than: '>',
-    equals: '='
-  }],
+  {
+    low_operator: [{
+      less_eq: '<=',
+      greater_than: '>',
+      less_than: '<',
+      equals: '='
+    }]
+  },
 
-  low_operator: [{
-    less_eq: '<=',
-    greater_than: '>',
-    less_than: '<',
-    equals: '='
-  }],
-  high_target: [
-    'excellent',
-    'effective',
-    'average',
-    'improvable',
-    'unacceptable'
-  ],
-  low_target: [
-    'unacceptable',
-    'improvable',
-    'average',
-    'effective',
-    'excellent'
-  ],
-  equal_symbol: ['='],
-  ampersand_symbol: ['&&'],
-  or_symbol: ['||']
-}];
+  {
+    high_target: [
+      'excellent',
+      'effective',
+      'average',
+      'improvable',
+      'unacceptable'
+    ]
+  },
+  {
+    low_target: [
+      'unacceptable',
+      'improvable',
+      'average',
+      'effective',
+      'excellent'
+    ]
+  },
+  {
+    equal_symbol: '='
+  },
+  {
+    ampersand_symbol: '&&'
+  },
+  {
+    or_symbol: '||'
+  }
+];
 
 db.Condition
   .remove({})

@@ -59,11 +59,11 @@ class Detail extends Component {
           </Col>
         </Row>
 
-        <Row>
+        {/* <Row>
           <Table>
               
             </Table>
-          </Row>
+          </Row> */}
 
         <Row>
           <Col size="md-2">

@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agent ScoreCard v1.3 (DEV)</title>
+    <title>Reporting Platform v1 (static)</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <script type="text/javascript" src="credentials.js"></script>
@@ -32,26 +32,26 @@
         <div id="dimension-filters">
             Dimensions
             <br>
-            <input type="text" id="tableInputLocation" class="search-key" onkeyup="searchAll()" placeholder="Search by Location">
-            <input type="text" id="tableInputManager" class="search-key" onkeyup="searchAll()" placeholder="Search by Manager">
-            <input type="text" id="tableInputPosition" class="search-key" onkeyup="searchAll()" placeholder="Search by Position">
-            <input type="text" id="tableInputSupervisor" class="search-key" onkeyup="searchAll()" placeholder="Search by Sup">
-            <input type="text" id="tableInputAgent" class="search-key" onkeyup="searchAll()" placeholder="Search by Agent">
+            <input type="text" id="tableInput1" class="search-key" onkeyup="searchAll()" placeholder="search 1">
+            <input type="text" id="tableInput2" class="search-key" onkeyup="searchAll()" placeholder="search 2">
+            <input type="text" id="tableInput3" class="search-key" onkeyup="searchAll()" placeholder="search 3">
+            <input type="text" id="tableInput4" class="search-key" onkeyup="searchAll()" placeholder="search 4">
+            <input type="text" id="tableInput5" class="search-key" onkeyup="searchAll()" placeholder="search 5">
         </div>
         <br>
         <div id="metric-filters">
             Metrics
             <br>
-            <input type="text" id="tableInputFCR" class="search-key" onkeyup="searchAll()" placeholder="filter fcr">
-            <input type="text" id="tableInputAE" class="search-key" onkeyup="searchAll()" placeholder="filter agent ease">
-            <input type="text" id="tableInputAHT" class="search-key" onkeyup="searchAll()" placeholder="filter aht">
-            <input type="text" id="tableInputAUX" class="search-key" onkeyup="searchAll()" placeholder="filter aux">
-            <input type="text" id="tableInputINBOUND" class="search-key" onkeyup="searchAll()" placeholder="filter inbound calls">
-            <input type="text" id="tableInputPLC" class="search-key" onkeyup="searchAll()" placeholder="filter plc">
-            <input type="text" id="tableInputRESOLVED" class="search-key" onkeyup="searchAll()" placeholder="filter tickets resolved">
-            <input type="text" id="tableInputCALLS" class="search-key" onkeyup="searchAll()" placeholder="filter call count">
-            <input type="text" id="tableInputCHATS" class="search-key" onkeyup="searchAll()" placeholder="filter chat count">
-            <input type="text" id="tableInputDcast" class="search-key" onkeyup="searchAll()" placeholder="filter dcast %">
+            <input type="text" id="tableInput6" class="search-key" onkeyup="searchAll()" placeholder="search 6">
+            <input type="text" id="tableInput7" class="search-key" onkeyup="searchAll()" placeholder="search 7">
+            <input type="text" id="tableInput8" class="search-key" onkeyup="searchAll()" placeholder="search 8">
+            <input type="text" id="tableInput9" class="search-key" onkeyup="searchAll()" placeholder="search 9">
+            <input type="text" id="tableInput10" class="search-key" onkeyup="searchAll()" placeholder="search 10">
+            <input type="text" id="tableInput11" class="search-key" onkeyup="searchAll()" placeholder="search 11">
+            <input type="text" id="tableInput12" class="search-key" onkeyup="searchAll()" placeholder="search 12">
+            <input type="text" id="tableInput13" class="search-key" onkeyup="searchAll()" placeholder="search 13">
+            <input type="text" id="tableInput14" class="search-key" onkeyup="searchAll()" placeholder="search 14">
+            <input type="text" id="tableInput15" class="search-key" onkeyup="searchAll()" placeholder="search 15">
         </div>
     </div>
 
@@ -126,33 +126,37 @@
             $('#inputs').removeClass('hide');
         });
 
-});
-
-        const cells = $('#tableHead').find('td');
-        cells.each(function (i) {
-            cells[i].onclick = (function (n) {
-                return function () {
-                    sortTable(n);
-                };
-            })(i);
-        });
 
 
-    function makeApiCall() {
-        $('#instructions').empty().removeClass('instructions');
-        const params = {
-            spreadsheetId: sheet_ID,
-            range: sheet_range,
-            valueRenderOption: 'FORMATTED_VALUE',
-            dateTimeRenderOption: 'SERIAL_NUMBER'
+
+        function makeApiCall() {
+            $('#instructions').empty().removeClass('instructions');
+            const params = {
+                spreadsheetId: sheet_ID,
+                range: sheet_range,
+                valueRenderOption: 'FORMATTED_VALUE',
+                dateTimeRenderOption: 'SERIAL_NUMBER'
+            };
+
+            const request = gapi.client.sheets.spreadsheets.values.get(params);
+            request.then(function (response) {
+                renderTable(response.result.values);
+            });
         };
 
-        const request = gapi.client.sheets.spreadsheets.values.get(params);
-        request.then(function (response) {
-            renderTable(response.result.values);
-        });
-    }
 
+
+    });
+
+    // const cells = $(tableHead).find('td');
+    // cells.each(function (i) {
+    //     cells[i].onclick = (function (n) {
+    //             return function () {
+    //                 sortTable(n);
+    //             };
+    //         })
+    //         (i);
+    // });
     function renderTable(tableData) {
         $('#inputs').removeClass('hide');
 
@@ -174,13 +178,22 @@
 
         });
 
+        const cells = $('#tableHead').find('td');
+        cells.each(function (i) {
+            cells[i].onclick = (function (n) {
+                return function () {
+                    sortTable(n);
+                };
+            })(i);
+        });
+
         // const colNum = $(this).cellIndex
 
         const dimension = ['date range', 'date interval', 'location: most recent', 'manager: most recent',
             'position: most recent', 'supervisor: most recent', 'supervisor: historical', 'agent name',
             'agent email'
         ];
-        const formattedmetric = ['7 day call fcr', 'agent ease', 'replacement rate', 'aux %', 'aht', 'deltacast'];
+        const formattedmetric = ['metric 1', 'metric 2', 'metric 3', 'metric 4', 'metric 5', 'metric 6'];
         const extrametric = [];
         const condition = ['exceptional', 'effective', 'achieves', 'NI', 'unacceptable'];
 
@@ -212,7 +225,7 @@
 
         // const cellText = this.innerHTML;
         // const cellText = $(this).text();
-        console.log(fcr.condition);
+        console.log('metric-1'.condition);
         console.log(settings);
         console.log(conditions);
         let status;
@@ -250,7 +263,7 @@
             $(this).addClass(status);
         });
 
-        $('.7-day-call-fcr').each(function () {
+        $('.metric-1').each(function () {
             const cellText = this.innerHTML;
             exceptional = 82.00;
             effective = 80.00;
@@ -277,7 +290,7 @@
             $(this).addClass(status);
         });
 
-        $('.agent-ease').each(function () {
+        $('.metric-2').each(function () {
             const cellText = this.innerHTML;
             exceptional = 9.9;
             effective = 9.7;
@@ -303,7 +316,7 @@
             $(this).addClass(status);
         });
 
-        $('.replacement-rate').each(function () {
+        $('.metric-3').each(function () {
             const cellText = this.innerHTML;
             exceptional = .06;
             effective = .07;
@@ -333,7 +346,7 @@
             $(this).addClass(status);
         });
 
-        $('.aux').each(function () {
+        $('.metric-3').each(function () {
             const cellText = this.innerHTML;
             const cleanedText = cellText.replace(/[%]/g, '');
             cellNum = parseFloat(cleanedText);
@@ -363,15 +376,7 @@
 
         });
 
-        // const cells = $(tableHead).find('td');
-        // cells.each(function (i) {
-        //     cells[i].onclick = (function (n) {
-        //             return function () {
-        //                 sortTable(n);
-        //             };
-        //         })
-        //         (i);
-        // });
+
     }
 
     // }); // END DOCUMENT READY
@@ -413,10 +418,22 @@
         table = document.getElementById('tableBody');
         trs = Array.from(table.getElementsByTagName('tr'));
 
-        const vlllu = ['tableInputLocation', 'tableInputPosition', 'tableInputManager', 'tableInputSupervisor',
-            'tableInputAgent', 'tableInputFCR', 'tableInputAE',
-            'tableInputAHT', 'tableInputAUX', 'tableInputINBOUND', 'tableInputPLC', 'tableInputRESOLVED',
-            'tableInputCALLS', 'tableInputCHATS', 'tableInputDcast'
+        const vlllu = [
+            'tableInput1',
+            'tableInput2',
+            'tableInput3',
+            'tableInput4',
+            'tableInput5',
+            'tableInput6',
+            'tableInput7',
+            'tableInput8',
+            'tableInput9',
+            'tableInput10',
+            'tableInput11',
+            'tableInput12',
+            'tableInput13',
+            'tableInput14',
+            'tableInput15'
         ]
         const vlu = [];
         for (d in vlllu) {
@@ -428,7 +445,7 @@
             let filters = [];
             vlu.forEach((filter, j) =>
                 filters.push(filter.toUpperCase()));
-            console.log(filters)
+            // console.log(filters)
 
             const testhere = tr.getElementsByTagName("td");
 
@@ -456,14 +473,18 @@
                 }
             }
         });
-    }
+    };
 
 
+
+    // Logic to sort the table with column header click:
     function sortTable(n) {
         let table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
         table = document.getElementById('tableBody');
         const head = document.getElementById('tableHead').getElementsByTagName('td')[n];
         const head$ = $(head);
+        // const i$ = $('i');
+        // i$.addClass('icon-arrow-down');
 
         switching = true;
         dir = 'asc';
@@ -472,10 +493,11 @@
             dir = 'desc';
             head$.removeClass('asc');
             head$.addClass('desc');
+            // $('i').addClass('icon-arrow-down')
         } else {
             head$.removeClass('desc');
-            head$.addClass('asc')
-        }
+            head$.addClass('asc');
+        };
 
         rows = Array.from(table.getElementsByTagName('tr'));
 
@@ -485,10 +507,10 @@
 
             if (x === '' && y === '') {
                 const agentX = $(a).find('.agent-name').text().toLowerCase();
-                const agentY = $(b).find('.agent-name').text().toLowerCase()
+                const agentY = $(b).find('.agent-name').text().toLowerCase(); // why is this agent??
 
 
-                if (dir === 'asc') {
+                if (dir === 'desc') {
                     return agentX.localeCompare(agentY);
                 }
                 return agentY.localeCompare(agentX);
@@ -512,9 +534,7 @@
         const table$ = $(table);
         table$.empty();
         rows.forEach(row => table$.append(row));
-
-
-    }
+    }; // END SORT TABLE
 </script>
 <script>
     handleClientLoad();

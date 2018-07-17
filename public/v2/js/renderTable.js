@@ -101,7 +101,14 @@ function renderTable(tableData) {
         })(i);
     });
 
+    renderFilters();
 
+    const downloadButton = $('<button>')
+    .addClass('download-button')
+    .appendTo('.navbar')
+    .attr('id', 'downloadButton')
+    // .attr('onclick', $('#theTable').table2csv())
+    .text('download CSV');
+
+    $('#theTable').table2csv();
 };
-
-renderFilters();

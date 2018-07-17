@@ -9,8 +9,8 @@ let KPIs = [];
 // currentTarget;
 // currentValueParams;
 // currentTitle;
-console.log(fcr);
-console.log("fcr conditions: " + fcr.condition);
+// console.log(fcr);
+// console.log("fcr conditions: " + metric.condition);
 // console.log("kpi conditions: "+KPI.condition); // CANNOT READ
 let conditionsBlock = setup.className + " conditions: " + setup.condition;
 console.log(settings);

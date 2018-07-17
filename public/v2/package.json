@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "table2csv": "^1.0.0",
     "tableexport": "^5.0.2"
   },
   "description": ""

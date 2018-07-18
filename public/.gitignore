@@ -5,6 +5,8 @@ OAuth.js
 node_modules
 package-lock.json
 /credentials
+credentialsv2.js
+dummyData.js
 
 # Logs
 logs

@@ -1,5 +1,3 @@
-console.log("8: sortTable.js loaded");
-
 // Call sortTable function to sort column on header click:
 
 const cells = $('thead').find('td');
@@ -69,3 +67,6 @@ function sortTable(n) {
     table$.empty();
     rows.forEach(row => table$.append(row));
 }; // END SORT TABLE
+
+// ERROR CHECK FEATURE: logs file loaded to console
+logFile();

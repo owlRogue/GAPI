@@ -1,5 +1,3 @@
-console.log("7: searchFilter.js loaded");
-
 // // Logic to filter using .search-key filters:
 function searchAll() {
     let trs, tds;
@@ -126,3 +124,5 @@ function searchAll() {
 
 
 
+// ERROR CHECK FEATURE: logs file loaded to console
+logFile();

@@ -1,5 +1,3 @@
-console.log("5: renderFilters.js loaded");
-
 function renderFilters(filters) {
 
     // Generate filters:
@@ -36,6 +34,7 @@ function renderFilters(filters) {
         
         console.log("dimension div is: "+dimensionDiv);
 
-        
-
 };
+
+// ERROR CHECK FEATURE: logs file loaded to console
+logFile();

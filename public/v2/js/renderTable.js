@@ -1,5 +1,3 @@
-console.log("6: renderTable.js loaded");
-
 // Push Data to table:
 function renderTable(tableData) {
     $('#input-filters').removeClass('hide');
@@ -101,14 +99,20 @@ function renderTable(tableData) {
         })(i);
     });
 
+    renderDownloadButton();
     renderFilters();
 
-    const downloadButton = $('<button>')
-    .addClass('download-button')
-    .appendTo('.navbar')
-    .attr('id', 'downloadButton')
-    // .attr('onclick', $('#theTable').table2csv())
-    .text('download CSV');
+    // const downloadButton = $('<button>')
+    //     .addClass('download-button')
+    //     .appendTo('.navbar')
+    //     .attr('id', 'downloadButton')
+    //     // .attr('onclick', $('#theTable').table2csv())
+    //     .text('download CSV');
 
-    $('#theTable').table2csv();
+    // $('.download-button').on("click", function callTable() {
+    //     $('#theTable').table2csv()
+    // });
 };
+
+// ERROR CHECK FEATURE: logs file loaded to console
+logFile();

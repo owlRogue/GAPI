@@ -67,7 +67,7 @@ button {
   border-radius: 5px;
 }
 
-.hide, .legend-hide {
+.hide, .legend-hide, .download-hide {
   display: none;
 } 
 

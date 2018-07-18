@@ -21,7 +21,7 @@ function testingCondition() {
         const noComma = cellText.replace(/\,/g, '');
             cellNum = parseFloat(noComma);
 
-            $('agent-ease')
+            $('metric-1');
         if (cellText + op1[0] + valueParams[0]) {
         condition = high[0];
 } else if (cellText + op1[0] + valueParams[1]) {

@@ -34,8 +34,8 @@ var credentials = {
 var sheet = [
 
     (defaultSheet = {
-        sheet_ID: '1l1GyTc65N-afxhIJ-9O7eogKYdOIUvZQw1m1D9IWoyQ',
-        sheet_range: ['A1:Q100'],
+        sheet_ID: "INSERT SHEET ID",
+        sheet_range: ["INSERT RANGE"],
         sheet_title: 'dummy data'
     }),
 

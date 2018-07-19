@@ -4,7 +4,7 @@ makeAPIcall.js
 OAuth.js
 # node_modules
 credentials/
-v2(broken)/
+/v2 (broken)
 
 # Logs
 logs

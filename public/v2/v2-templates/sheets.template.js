@@ -1,3 +1,7 @@
+// INSTRUCTIONS :
+// Replace dummyData.js (or) SCsheetsIDs.js with the below. 
+// Only one of those 2 files should be active.
+
 // var sheet_ID;
 // var sheet_range;
 // var sheet_title;

@@ -1,0 +1,16 @@
+{
+  "name": "v2",
+  "version": "1.0.0",
+  "description": "Follow the intructions in initClient2.js and makeAPIcall2.js in order to get your credentials info from Google console.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "node": "^10.6.0"
+  }
+}

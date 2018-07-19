@@ -9,6 +9,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bootstrap": "^4.1.2",
+    "jquery": "^3.3.1",
+    "npm": "^6.2.0",
+    "popper.js": "^1.14.3",
     "table2csv": "^1.0.0",
     "tableexport": "^5.0.2"
   },

@@ -4,9 +4,10 @@ makeAPIcall.js
 OAuth.js
 node_modules
 package-lock.json
-/credentials
-credentialsv2.js
-dummyData.js
+credentials/
+    credentialsv2.js
+    dummyData.js
+    SCsheetsIDs.js
 
 # Logs
 logs

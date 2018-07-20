@@ -23,10 +23,10 @@ function renderTable(tableData) {
     // Assign classes to arrays:
     const dimension = ['date range', 'date interval', 'location: most recent', 'manager: most recent', 'position: most recent', 'supervisor: most recent', 'supervisor: historical', 'agent name', 'agent email'];
     const formattedmetric = ['7 day call fcr', 'agent ease', 'replacement rate', 'aux %', 'aht', 'deltacast %', 'replacements and oneoffs per unique tickets updated by updater'];
-    const extrametrics = [];
-    const classNames = [];
-    const idNames = [];
-    let fieldType = 'indextitle';
+    let extrametrics = [];
+    let classNames = [];
+    let idNames = [];
+    let fieldType = [];
     let hyph;
     let cleaned;
 
@@ -38,6 +38,7 @@ function renderTable(tableData) {
 
 
     $(headerCell$).each(function (i) {
+        fieldType = 'indextitle';
         const headers = $('thead td');
         const celldata = this.innerHTML;
 

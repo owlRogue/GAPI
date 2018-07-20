@@ -1,6 +1,4 @@
-credentials.js
-initClient.js
-makeAPIcall.js
+v1/credentials.js
 OAuth.js
 # node_modules
 credentialsv2.js

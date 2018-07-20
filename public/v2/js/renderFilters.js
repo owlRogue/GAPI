@@ -32,7 +32,7 @@ function renderFilters(filters) {
 
         //////////////////// DEBUGGING ZONE:  //////////////////////////////////////////////////////////////
         
-        console.log("dimension div is: "+dimensionDiv);
+        // console.log("dimension div is: "+dimensionDiv);
 
 };
 

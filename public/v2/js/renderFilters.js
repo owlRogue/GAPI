@@ -1,38 +1,45 @@
-function renderFilters(filters) {
-
+function renderFilters() {
+    console.log("render filters included");
     // Generate filters:
     const dimensionDiv = $('#dimension-filters');
-    console.log("dimension div exists: "+dimensionDiv);
+    console.log("dimension div exists: " + Object.keys(dimensionDiv));
     const metricDiv = $('#metric-filters');
-    
+
     let input$; // console.log(input$);
     // let searchKey$ = $('.search-key'); // console.log(searchKey$);
-    
-    const index = $('.indextitle');
-    const dimension$ = $('input.dimension');
-    const formatted$ = $('input.formatted-metric');
-    
-    $(index).each(function (i) {
-        const inputs = $('<input>')
-            .addClass('search-key')
 
+    const index = $('.indextitle');
+    const dimension$ = $('.dimension');
+    const formatted$ = $('.formatted-metric');
+
+    $(index).each(function (i) {
+        inputs = $('<input>')
             .attr('type', 'text')
+            .addClass('search-key')
             .attr('name', $(this).text())
             .attr('id', 'tableInput' + [i])
             .attr('placeholder', 'search by ' + $(this).text().replace(/[%:]/g, '').trim())
             .addClass($(this).text().replace(/[%: ]/g, '').trim() + 'Filter')
             .addClass($(this).text().replace(/[%:]/g, '').replace(/[ ]/g, '-').trim())
-            .attr('onkeyup', 'searchAll()');
-            // .addClass('search-key');
-                
-                $(dimension$).appendTo(dimensionDiv);
-                // $(dimension$).appendTo(dimensionDiv);
-                // $(formatted$).appendTo(metricDiv);
-        });
+            .attr('onkeyup', 'searchAll()')
 
-        //////////////////// DEBUGGING ZONE:  //////////////////////////////////////////////////////////////
+            $(formatted$).each(function (i) {
+                $(inputs).appendTo(metricDiv);
+            });
         
-        // console.log("dimension div is: "+dimensionDiv);
+            $(dimension$).each(function (i) {
+                $(inputs).appendTo(dimensionDiv);
+            });
+            // .appendTo(metricDiv);
+        // .addClass('search-key');
+        // $(inputs).appendTo(dimension$);
+        // $(dimension$).appendTo(dimensionDiv);
+    });
+
+    //////////////////// DEBUGGING ZONE:  //////////////////////////////////////////////////////////////
+
+
+    // console.log("dimension div is: "+dimensionDiv);
 
 };
 

@@ -1,1 +1,5 @@
-Follow the intructions in initClient2.js and makeAPIcall2.js in order to get your credentials info from Google console.
+Before this app can be run (atm), credentials must be set up.
+
+First, create a folder called 'credentials' in the main directory.
+
+Then, follow the instructions in the .template.js files.

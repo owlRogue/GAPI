@@ -1,4 +1,4 @@
-// INSTRUCTIONS: replace credentialsv2.js with the below
+// INSTRUCTIONS: retitle to Keys.js and fill in the below.
 
 // var credentials = {
 //     gapi_Key: "INSERT API KEY",

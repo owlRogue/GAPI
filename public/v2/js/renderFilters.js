@@ -2,7 +2,7 @@ function renderFilters() {
     console.log("render filters included");
     // Generate filters:
     const dimensionDiv = $('#dimension-filters');
-    console.log("dimension div exists: " + Object.keys(dimensionDiv));
+    // console.log("dimension div exists: " + Object.keys(dimensionDiv));
     const metricDiv = $('#metric-filters');
 
     let input$; // console.log(input$);
@@ -23,11 +23,11 @@ function renderFilters() {
             .addClass($(this).text().replace(/[%:]/g, '').replace(/[ ]/g, '-').trim())
             .attr('onkeyup', 'searchAll()')
 
-            $(formatted$).each(function (i) {
+            $(formatted$).each(function () {
                 $(inputs).appendTo(metricDiv);
-            });
+            })
         
-            $(dimension$).each(function (i) {
+            $(dimension$).each(function () {
                 $(inputs).appendTo(dimensionDiv);
             });
             // .appendTo(metricDiv);

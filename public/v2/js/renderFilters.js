@@ -1,17 +1,18 @@
 function renderFilters() {
     console.log("render filters included");
     // Generate filters:
-    const dimensionDiv = $('#dimension-filters');
-    const metricDiv = $('#metric-filters');
-    const inputDiv = $('#input-filters');
+    // const inputDiv = $('#input-filters');
+    const inputDiv = $('#temp-all-filters');
+    // const dimensionDiv = $('#dimension-filters');
+    // const metricDiv = $('#metric-filters');
     
     const index = $('.indextitle');
     
-    let searchkey = $('.search-key'); // console.log(searchKey$);
-    const dimensionFilter = $('input.dimension');
+    let searchKey$ = $('.search-key'); // console.log(searchKey$);
+    // const dimensionFilter = $('input.dimension');
+    // const formattedFilter = $('input.formatted');
+    // const extraMetricFilter = $('input.extrametric');
     
-    const formattedFilter = $('input.formatted');
-    const extraMetricFilter = $('input.extrametric');
 
     $(index).each(function (i) {
         var inputs = $('<input>')
@@ -22,28 +23,19 @@ function renderFilters() {
             .attr('id', 'tableInput' + [i])
             .attr('onkeyup', 'searchAll()')
             .attr('placeholder', 'search by ' + $(this).text().replace(/[%:]/g, '').trim())
-            .addClass($(this).text().replace(/[%: ]/g, '').trim() + '-filter ' + '.filter')
-            .addClass($(this).text().replace(/[%:]/g, '').replace(/[ ]/g, '-').trim());
-        // .addClass(fieldType);
-
-        // var placeholder = $(inputs).attr('placeholder')
-        // console.log(placeholder);
-
+            .addClass($(this).text().replace(/[%: ]/g, '').trim() + '-filter ' + ' filter')
+            .addClass($(this).text().replace(/[%:]/g, '').replace(/[ ]/g, '-').trim())
+            // if (this.hasClass('dimension')) {
+            //     $('input').addClass('dimension')
+            //         .appendTo(dimensionDiv)
+            // };
+        console.log(searchKey$);
+        
     });
-
-    console.log(searchkey);
     
-    // formattedFilter.appendTo(metricDiv);
-    // or formatted
-    // extrametric
-    // calculated-field
-    // then also assign that class to the input field.
+    
+};
 
-    // these
-
-    // function () {
-    //     if (dimension.includes())
-    // }
 
     // $(formattedFilter).each(function () {
     // extraMetricFilter.appendTo(metricDiv);
@@ -62,21 +54,10 @@ function renderFilters() {
     //    searchKey$.appendTo(dimensionDiv);
     //    });
 
-
-
-    // .appendTo(metricDiv);
-
     // $(inputs).appendTo(dimension$);
     // $(dimension$).appendTo(dimensionDiv);
 
 // });
-
-//////////////////// DEBUGGING ZONE:  //////////////////////////////////////////////////////////////
-
-
-// console.log("dimension div is: "+dimensionDiv);
-
-};
 
 
 // ERROR CHECK FEATURE: logs file loaded to console

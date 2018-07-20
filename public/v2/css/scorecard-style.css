@@ -63,7 +63,8 @@ button {
 
 #dimension-filters,
 #metric-filters,
-#other-filters {
+#other-filters,
+#temp-all-filters {
   padding: 10px;
   border-radius: 5px;
   border-bottom: 5px white;

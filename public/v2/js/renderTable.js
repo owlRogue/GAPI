@@ -33,7 +33,7 @@ function renderTable(tableData) {
     let headerCell$ = $('thead td'); // console.log(headerCell$);
     // let bodyCell$ = $('tbody td'); // console.log(bodyCell$);
     // let bodyRow$ = $('tbody tr'); // console.log(bodyRow$);
-    let searchKey$ = $('.search-key'); // console.log(searchKey$);
+    
     // let input$ = $('input'); // console.log(input$);
 
 
@@ -44,13 +44,14 @@ function renderTable(tableData) {
 
         $(headers[i]).attr("row", "0");
         $(headers[i]).attr("name", celldata);
+        $(headers[i]).attr("id", "index"+i);
         $(headers[i]).addClass('indextitle');
 
         if (dimension.includes(celldata)) {
             fieldType = 'dimension';
 
         } else if (formattedmetric.includes(celldata)) {
-            fieldType = 'formatted-metric';
+            fieldType = 'formatted';
 
         } else {
             $(this).addClass('extrametric')

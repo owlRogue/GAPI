@@ -54,12 +54,12 @@ console.log(conditionsBlock);
 conditionAssignment();
 
 
-function currentKPIs(condition, operator, target, value_Params, title) {
+function currentKPIs (condition, operator, target, value_Params, title) {
     currentKPIs.condition = currentCondition,
-        currentKPIs.operator = currentOperator,
-        currentKPIs.target = currentTarget,
-        currentKPIs.value_Params = currentValueParams,
-        currentKPIs.title = currentTitle
+    currentKPIs.operator = currentOperator,
+    currentKPIs.target = currentTarget,
+    currentKPIs.value_Params = currentValueParams,
+    currentKPIs.title = currentTitle
 };
 
 currentKPIs()
@@ -69,33 +69,28 @@ console.log(currentKPIs)
 // const cellText = this.innerHTML;
 
 function testingCondition() {
-    let formattedCell$ = new Array($('.formatted-metric'))
-    console.log('formattedCell$: ' + formattedCell$)
-    console.log(formattedCell$);
-};
-testingCondition();
+  let formattedCell$ = new Array($('.formatted-metric'))
+  console.log('formattedCell$: '+ formattedCell$)
+  console.log(formattedCell$);}; testingCondition();
+    const cellText = $(this).text();
+    console.log("cellText: " + cellText)
+        const noComma = cellText.replace(/\,/g, '');
+            cellNum = parseFloat(noComma);
 
-const cellText = $(this).text();
-console.log("cellText: " + cellText)
-const noComma = cellText.replace(/\,/g, '');
-cellNum = parseFloat(noComma);
-
-$('.metric-2')
-if (cellText + op1[0] + valueParams[0]) {
-    condition = high[0];
+            $('.metric-2')
+        if (cellText + op1[0] + valueParams[0]) {
+        condition = high[0];
 } else if (cellText + op1[0] + valueParams[1]) {
-    condition = high[1];
+        condition = high[1];
 } else if (cellText + op1[0] + valueParams[2]) {
-    condition = high[2];
+        condition = high[2];
 } else if (cellText + op1[0] + valueParams[3]) {
-    condition = high[3];
+        condition = high[3];
 } else if (cellText + op1[0] + valueParams[4]) {
-    condition = high[4];
-} else {
-    condition = undefined
-};
+        condition = high[4];
+} else {condition = undefined};
 
-testingCondition()
+        testingCondition()
 
 // ERROR CHECK FEATURE: logs file loaded to console
 logFile();

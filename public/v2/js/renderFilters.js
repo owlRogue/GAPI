@@ -13,27 +13,41 @@ function renderFilters() {
     const formatted$ = $('.formatted-metric');
 
     $(index).each(function (i) {
-        inputs = $('<input>')
+        var inputs = $('<input>')
             .attr('type', 'text')
             .addClass('search-key')
+            .appendTo('#input-filters')
             .attr('name', $(this).text())
             .attr('id', 'tableInput' + [i])
-            .attr('placeholder', 'search by ' + $(this).text().replace(/[%:]/g, '').trim())
-            .addClass($(this).text().replace(/[%: ]/g, '').trim() + 'Filter')
-            .addClass($(this).text().replace(/[%:]/g, '').replace(/[ ]/g, '-').trim())
             .attr('onkeyup', 'searchAll()')
+            .attr('placeholder', 'search by ' + $(this).text().replace(/[%:]/g, '').trim())
+            .addClass($(this).text().replace(/[%: ]/g, '').trim() + '-filter ' + '.filter')
+            .addClass($(this).text().replace(/[%:]/g, '').replace(/[ ]/g, '-').trim());
+            // .addClass(fieldType);
 
-            $(formatted$).each(function () {
-                $(inputs).appendTo(metricDiv);
-            })
+                       
+
+            // $(searchKey$).each(function (j) {
+            //     input = $('input')
+            //     if ()
+
+            // function () {
+            //     if (dimension.includes())
+            // }
+
+            // $(formatted$).each(function () {
+            //     $(inputs).appendTo(metricDiv);
+            // })
         
-            $(dimension$).each(function () {
-                $(inputs).appendTo(dimensionDiv);
-            });
+            // $(dimension$).each(function () {
+            //     $(inputs).appendTo(dimensionDiv);
+            // });
+
             // .appendTo(metricDiv);
-        // .addClass('search-key');
+
         // $(inputs).appendTo(dimension$);
         // $(dimension$).appendTo(dimensionDiv);
+
     });
 
     //////////////////// DEBUGGING ZONE:  //////////////////////////////////////////////////////////////

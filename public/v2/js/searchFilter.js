@@ -9,7 +9,7 @@ function searchAll() {
 
     // Get each value entered, upon keyUp:
     for (key in searchKey$) {
-        var contents = $('#tableFilter1')[0];
+        var contents = $('#tableFilter'[key]);
         vlu.push(document.getElementById(searchKey$[key]).value); // does not return the values
         const searchVal = $(this).val();
         // const searchVal2 = document.getElementById(searchKeys[d]).value;

@@ -92,5 +92,5 @@
 
 //         testingCondition()
 
-// ERROR CHECK FEATURE: logs file loaded to console
-logFile();
+// // ERROR CHECK FEATURE: logs file loaded to console
+// logFile();

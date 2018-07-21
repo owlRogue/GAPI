@@ -1,5 +1,5 @@
 // Authenticate Google:
-function initClient() {
+var initClient = () => {
 
   $("#instructions").text("authenticating credentials...");
   $("#instructions").addClass("instructions");
@@ -15,17 +15,17 @@ function initClient() {
         "https://sheets.googleapis.com/$discovery/rest?version=v4"
       ]
     })
-    .then(function () {
+    .then(() => {
       gapi.auth2.getAuthInstance().isSignedIn.listen(updateSignInStatus);
       updateSignInStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
     });
 }
 
-function handleClientLoad() {
+var handleClientLoad = () => {
   gapi.load("client:auth2", initClient);
 }
 
-function updateSignInStatus() {
+var updateSignInStatus = () => {
   $("#instructions").text(
     "You are signed in. Please select a report from the nav bar."
   );
@@ -34,7 +34,7 @@ function updateSignInStatus() {
   }
 }
 
-function handleSignInClick() {
+var handleSignInClick = () => {
   gapi.auth2.getAuthInstance().signIn();
 }
 

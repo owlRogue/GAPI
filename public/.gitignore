@@ -1,11 +1,11 @@
 credentials.js
-initClient.js
-makeAPIcall.js
 OAuth.js
 # node_modules
 credentialsv2.js
 Keys.js
 Sheets.js
+*.bak
+public.bak/
 
 # Logs
 logs

@@ -89,7 +89,6 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-
         // credentials;
         let results;
         let values;
@@ -101,23 +100,19 @@
         let buttonTitle;
         let buttonSheetID;
         let buttonSheetRange;
-
         // Generate buttons in navbar from looping through the 'sheet' object array in makeAPIcall.js:
         for (i = 0; i < sheet.length; i++) {
-
             thisSheet = {
                 sheet_ID: sheet[i].sheet_ID,
                 sheet_range: sheet[i].sheet_range,
                 sheet_title: sheet[i].sheet_title
             };
-
             rawTitle = thisSheet.sheet_title;
             buttonTitle = rawTitle.replace(/[- ]/g, '')
                 .trim()
                 .replace(/ /g, '-');
             buttonSheetID = thisSheet.sheet_ID;
             buttonSheetRange = thisSheet.sheet_range;
-
             const sheetBtn = $('<button>')
                 .addClass('sheet-button ' + buttonTitle)
                 .text(rawTitle)
@@ -128,7 +123,6 @@
                     title: buttonTitle
                 });
         };
-
         // Set button routes:
         $('.sheet-button').on("click", function callTable() {
             sheet_ID = $(this).data("sheetInfo").id;
@@ -142,13 +136,11 @@
             $('h2').append(sheet_title);
             $('#input-filters').removeClass('legend-hide');
         });
-
         // Hide filters when Legend sheet is displayed:
         $('.Legend').on("click", function hideLegendFilters() {
             $('#input-filters').addClass('legend-hide');
         });
         // in future, make dynamic by creating show_legend value in sheet object
-
     });
     // END DOCUMENT READY
 </script>

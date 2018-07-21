@@ -1,0 +1,15 @@
+.googleButton, .sign-in-btn {
+    font-family: "Josefin Sans";
+    font-weight: 300;
+    float: right;
+    color: white;
+    background-color: skyblue;
+    margin-left: 10px;
+    border-width: 0px;
+    border-radius: 2px;
+  }
+
+.sign-in-btn:hover {
+  color: black;
+  background-color: skyblue;
+}

@@ -1,15 +1,17 @@
-// // Conditional formatting class setting:
+// Conditional formatting class setting:
 // const formattedMetric = $('.formatted-metric');
 // const KPI = [];
 // let KPIs = [];
-// // currentCondition;
-// // currentOperator;
-// // currentTarget;
-// // currentValueParams;
-// // currentTitle;
-// // console.log(fcr);
-// // console.log("fcr conditions: " + metric.condition);
-// // console.log("kpi conditions: "+KPI.condition); // CANNOT READ
+// currentCondition;
+// currentOperator;
+// currentTarget;
+// currentValueParams;
+// currentTitle;
+
+// console.log(fcr);
+// console.log("fcr conditions: " + metric.condition);
+// console.log("kpi conditions: " + KPI.condition); // CANNOT READ
+
 // let conditionsBlock = setup.className + " conditions: " + setup.condition;
 // console.log(settings);
 // let setting$ = $(settings);
@@ -21,8 +23,8 @@
 //         console.log(class1);
 //         const cellText = this.innerHTML;
 
-//         KPI;
-//         // $(td)
+        // KPI;
+        // $(td)
 
 //         $('tbody td').each(function (i) {
 //             if (($('tbody td').hasClass(classNames[i])) &&
@@ -31,9 +33,9 @@
 //                 console.log(KPI);
 //                 console.log(className.parent());
 //                 console.log("KPI: " + KPI);
-//             } else {}
+//             };
 //         });
-//     }
+//     };
 // };
 
 // function conditionAssignment() {
@@ -46,10 +48,11 @@
 //         KPITitle = KPIs.className;
 //         console.log(KPIs);
 
-//         // KPI.push(KPIs);
-//         // sheet_ID = $(this).data("sheetInfo").id;
+//         KPI.push(KPIs);
+//         sheet_ID = $(this).data("sheetInfo").id;
 //     }
 // };
+
 // console.log(conditionsBlock);
 // conditionAssignment();
 
@@ -65,32 +68,35 @@
 // currentKPIs()
 // console.log(currentKPIs)
 
-// // Sets condition logic:
-// // const cellText = this.innerHTML;
+// Sets condition logic:
+// const cellText = this.innerHTML;
 
 // function testingCondition() {
-//   let formattedCell$ = new Array($('.formatted-metric'))
-//   console.log('formattedCell$: '+ formattedCell$)
-//   console.log(formattedCell$);}; testingCondition();
-//     const cellText = $(this).text();
-//     console.log("cellText: " + cellText)
-//         const noComma = cellText.replace(/\,/g, '');
-//             cellNum = parseFloat(noComma);
+//     let formattedCell$ = new Array($('.formatted-metric'))
+//     console.log('formattedCell$: '+ formattedCell$)
+//     console.log(formattedCell$);
+// };
 
-//             $('.metric-2')
-//         if (cellText + op1[0] + valueParams[0]) {
-//         condition = high[0];
+// testingCondition();
+// const cellText = $(this).text();
+// console.log("cellText: " + cellText)
+// const noComma = cellText.replace(/\,/g, '');
+// cellNum = parseFloat(noComma);
+
+// $('.metric-2')
+// if (cellText + op1[0] + valueParams[0]) {
+//     condition = high[0];
 // } else if (cellText + op1[0] + valueParams[1]) {
-//         condition = high[1];
+//     condition = high[1];
 // } else if (cellText + op1[0] + valueParams[2]) {
-//         condition = high[2];
+//     condition = high[2];
 // } else if (cellText + op1[0] + valueParams[3]) {
-//         condition = high[3];
+//     condition = high[3];
 // } else if (cellText + op1[0] + valueParams[4]) {
-//         condition = high[4];
+//     condition = high[4];
 // } else {condition = undefined};
 
-//         testingCondition()
+// testingCondition();
 
 // ERROR CHECK FEATURE: logs file loaded to console
 logFile();

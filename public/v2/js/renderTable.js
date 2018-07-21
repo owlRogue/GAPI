@@ -86,6 +86,7 @@ function renderTable(tableData) {
             ' ' + i);
 
     });
+    
     // console.log("These metrics do not have conditional formatting rules: " + extrametrics);
     // console.log(extrametrics);
 
@@ -102,16 +103,16 @@ function renderTable(tableData) {
     renderDownloadButton();
     renderFilters();
 
-    // const downloadButton = $('<button>')
-    //     .addClass('download-button')
-    //     .appendTo('.navbar')
-    //     .attr('id', 'downloadButton')
-    //     // .attr('onclick', $('#theTable').table2csv())
-    //     .text('download CSV');
+    const downloadButton = $('<button>')
+        .addClass('download-button')
+        .appendTo('.navbar')
+        .attr('id', 'downloadButton')
+        // .attr('onclick', $('#theTable').table2csv())
+        .text('download CSV');
 
-    // $('.download-button').on("click", function callTable() {
-    //     $('#theTable').table2csv()
-    // });
+    $('.download-button').on("click", function callTable() {
+        $('#theTable').table2csv()
+    });
 };
 
 // ERROR CHECK FEATURE: logs file loaded to console

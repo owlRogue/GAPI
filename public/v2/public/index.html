@@ -36,6 +36,19 @@
 <style></style>
 
 <body>
+
+<!-- JAVASCRIPT APP-SPECIFIC SCRIPTS -->
+<script type="text/javascript" src="js/conditionalSettings.js"></script>
+<script type="text/javascript" src="js/initClient.js"></script>
+<script type="text/javascript" src="js/makeGAPIcall.js"></script>
+<script type="text/javascript" src="js/renderFilters.js"></script>
+<script src="src/table2csv.js"></script>
+<script type="text/javascript" src="js/renderTable.js"></script>
+<script type="text/javascript" src="js/tabletocsv.js"></script>
+<script type="text/javascript" src="js/sortTable.js"></script>
+<script type="text/javascript" src="js/searchFilter.js"></script>
+<!-- <script type="text/javascript" src="js/conditionalFormat.js"></script> -->
+
     <navbar class="navbar" id="navbar">
         <button id="signin-button" onclick="handleSignInClick()">Sign In</button>
     </navbar>
@@ -75,20 +88,9 @@
 
 
 </body>
-    <!-- JAVASCRIPT APP-SPECIFIC SCRIPTS -->
-    <script type="text/javascript" src="js/conditionalSettings.js"></script>
-    <script type="text/javascript" src="js/initClient.js"></script>
-    <script type="text/javascript" src="js/makeGAPIcall.js"></script>
-    <script type="text/javascript" src="js/renderFilters.js"></script>
-    <script type="text/javascript" src="js/renderTable.js"></script>
-    <script src="src/table2csv.js"></script>
-    <script type="text/javascript" src="js/tabletocsv.js"></script>
-    <script type="text/javascript" src="js/sortTable.js"></script>
-    <script type="text/javascript" src="js/searchFilter.js"></script>
-    <script type="text/javascript" src="js/conditionalFormat.js"></script>
-
 <script type="text/javascript">
     $(document).ready(function () {
+
         // credentials;
         let results;
         let values;
@@ -100,19 +102,23 @@
         let buttonTitle;
         let buttonSheetID;
         let buttonSheetRange;
+
         // Generate buttons in navbar from looping through the 'sheet' object array in makeAPIcall.js:
         for (i = 0; i < sheet.length; i++) {
+
             thisSheet = {
                 sheet_ID: sheet[i].sheet_ID,
                 sheet_range: sheet[i].sheet_range,
                 sheet_title: sheet[i].sheet_title
             };
+
             rawTitle = thisSheet.sheet_title;
             buttonTitle = rawTitle.replace(/[- ]/g, '')
                 .trim()
                 .replace(/ /g, '-');
             buttonSheetID = thisSheet.sheet_ID;
             buttonSheetRange = thisSheet.sheet_range;
+
             const sheetBtn = $('<button>')
                 .addClass('sheet-button ' + buttonTitle)
                 .text(rawTitle)
@@ -123,6 +129,7 @@
                     title: buttonTitle
                 });
         };
+
         // Set button routes:
         $('.sheet-button').on("click", function callTable() {
             sheet_ID = $(this).data("sheetInfo").id;
@@ -136,26 +143,18 @@
             $('h2').append(sheet_title);
             $('#input-filters').removeClass('legend-hide');
         });
+
         // Hide filters when Legend sheet is displayed:
         $('.Legend').on("click", function hideLegendFilters() {
             $('#input-filters').addClass('legend-hide');
         });
         // in future, make dynamic by creating show_legend value in sheet object
+
     });
     // END DOCUMENT READY
 </script>
 
-<!-- JAVASCRIPT APP-SPECIFIC SCRIPTS -->
-<script type="text/javascript" src="js/conditionalSettings.js"></script>
-<script type="text/javascript" src="js/initClient.js"></script>
-<script type="text/javascript" src="js/makeAPIcall.js"></script>
-<script type="text/javascript" src="js/renderFilters.js"></script>
-<script src="src/table2csv.js"></script>
-<script type="text/javascript" src="js/renderTable.js"></script>
-<script type="text/javascript" src="js/tabletocsv.js"></script>
-<script type="text/javascript" src="js/sortTable.js"></script>
-<script type="text/javascript" src="js/searchFilter.js"></script>
-<!-- <script type="text/javascript" src="js/conditionalFormat.js"></script> -->
+
 
 <!-- CREDENTIALS -->
 <!-- <script type="text/javascript" src="../../credentials/credentialsv2.js"></script> -->

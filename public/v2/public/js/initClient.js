@@ -1,12 +1,6 @@
-// CHANGE ME AND UPDATE MY TITLE TO initClient.js
-
-var credentials = {
-  gapi_Key: "AIzaSyCun_pNEChhqJHISKnJHC0suIW4IIEQxfA",
-  gapi_Client: "547436011738-e120aehoked3ooj31pml4ivcmrtl8k6f.apps.googleusercontent.com"
-};
-
 // Authenticate Google:
 function initClient() {
+
   $("#instructions").text("authenticating credentials...");
   $("#instructions").addClass("instructions");
   const API_KEY = credentials.gapi_Key;
@@ -43,3 +37,8 @@ function updateSignInStatus() {
 function handleSignInClick() {
   gapi.auth2.getAuthInstance().signIn();
 }
+
+// ERROR CHECK FEATURE: logs file loaded to console
+logFile();
+
+

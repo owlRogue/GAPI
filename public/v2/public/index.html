@@ -6,14 +6,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reporting Platform v2</title>
-    
-    
+
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.0.0/journal/bootstrap.min.css" /> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
-    
+
     <!-- ERROR CHECK SCRIPTS -->
+<<<<<<< HEAD:public/v2/public/index.html
+    <script type="text/javascript" src="/error-checks/js-file-load.js"></script>
+    <script type="text/javascript" src="/credentials/Keys.js"></script>
+    <script type="text/javascript" src="/credentials/Sheets.js"></script>
+
+=======
     <script type="text/javascript" src="../../error-checks/js-file-load.js"></script>
     <script type="text/javascript" src="../../credentials/Keys.js"></script>
     <script type="text/javascript" src="../../credentials/Sheets.js"></script>
@@ -23,6 +29,7 @@
     <!-- CREDENTIALS -->
     <!-- <script type="text/javascript" src="../../credentials/credentialsv2.js"></script> -->
     
+>>>>>>> master:public/v2/index.html
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans:100,400,600,700">
     <link href="css/scorecard-style.css" rel="stylesheet">
 
@@ -152,9 +159,26 @@
     });
     // END DOCUMENT READY
 </script>
+
+<!-- JAVASCRIPT APP-SPECIFIC SCRIPTS -->
+<script type="text/javascript" src="js/conditionalSettings.js"></script>
+<script type="text/javascript" src="js/initClient.js"></script>
+<script type="text/javascript" src="js/makeAPIcall.js"></script>
+<script type="text/javascript" src="js/renderFilters.js"></script>
+<script src="src/table2csv.js"></script>
+<script type="text/javascript" src="js/renderTable.js"></script>
+<script type="text/javascript" src="js/tabletocsv.js"></script>
+<script type="text/javascript" src="js/sortTable.js"></script>
+<script type="text/javascript" src="js/searchFilter.js"></script>
+<!-- <script type="text/javascript" src="js/conditionalFormat.js"></script> -->
+
+<!-- CREDENTIALS -->
+<!-- <script type="text/javascript" src="../../credentials/credentialsv2.js"></script> -->
+
 <script>
     handleClientLoad();
 </script>
+
 </body>
 
 </html>

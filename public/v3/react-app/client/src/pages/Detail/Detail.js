@@ -21,7 +21,7 @@ class Detail extends Component {
   render() {
 
 
-    
+
     return (
       <Container fluid>
         <Row>
@@ -34,18 +34,18 @@ class Detail extends Component {
           </Col>
         </Row>
 
-        
+
         <Row>
           <Col size="md-10 md-offset-1">
-              <h1>GSheet Link</h1>
-              <List>
-              <ListItem>{"url: "+this.state.sheet.url}{this.state.sheet.gid}
+            <h1>GSheet Link</h1>
+            <List>
+              <ListItem>{"url: " + this.state.sheet.url}{this.state.sheet.gid}
               </ListItem>
-              <ListItem>{"range: "+this.state.sheet.range}</ListItem>
-              </List>
+              <ListItem>{"range: " + this.state.sheet.range}</ListItem>
+            </List>
           </Col>
-        </Row> 
-       
+        </Row>
+
 
         <Row>
           <Col size="md-10 md-offset-1">
@@ -55,7 +55,7 @@ class Detail extends Component {
                 {this.state.sheet.data}
               </p>
             </article>
-            <Table columns={this.state.sheet} data={this.state.sheet.title}/>;
+            <Table columns={this.state.sheet} data={this.state.sheet.title} />;
           </Col>
         </Row>
 

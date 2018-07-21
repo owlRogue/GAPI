@@ -18,17 +18,7 @@
     <script type="text/javascript" src="../../credentials/Keys.js"></script>
     <script type="text/javascript" src="../../credentials/Sheets.js"></script>
     
-    <!-- JAVASCRIPT APP-SPECIFIC SCRIPTS -->
-    <script type="text/javascript" src="js/conditionalSettings.js"></script>
-    <script type="text/javascript" src="js/initClient.js"></script>
-    <script type="text/javascript" src="js/makeAPIcall.js"></script>
-    <script type="text/javascript" src="js/renderFilters.js"></script>
-    <script src="src/table2csv.js"></script>
-    <script type="text/javascript" src="js/renderTable.js"></script>
-    <script type="text/javascript" src="js/tabletocsv.js"></script>
-    <script type="text/javascript" src="js/sortTable.js"></script>
-    <script type="text/javascript" src="js/searchFilter.js"></script>
-    <!-- <script type="text/javascript" src="js/conditionalFormat.js"></script> -->
+
     
     <!-- CREDENTIALS -->
     <!-- <script type="text/javascript" src="../../credentials/credentialsv2.js"></script> -->
@@ -52,7 +42,11 @@
 
     <h2></h2>
     <div id='input-filters' class='hide'>
-        <div id="dimension-filters">
+        <div id="temp-all-filters">
+            Filters
+            <br>
+        </div>
+        <!-- <div id="dimension-filters">
             Dimensions
             <br>
         </div>
@@ -61,6 +55,10 @@
             Metrics
             <br>
         </div>
+        <div id="other-filters">
+            Other Filters
+            <br>
+        </div> -->
     </div>
 
     <div class="table-responsive-lg">
@@ -77,6 +75,17 @@
 
 
 </body>
+    <!-- JAVASCRIPT APP-SPECIFIC SCRIPTS -->
+    <script type="text/javascript" src="js/conditionalSettings.js"></script>
+    <script type="text/javascript" src="js/initClient.js"></script>
+    <script type="text/javascript" src="js/makeGAPIcall.js"></script>
+    <script type="text/javascript" src="js/renderFilters.js"></script>
+    <script type="text/javascript" src="js/renderTable.js"></script>
+    <script src="src/table2csv.js"></script>
+    <script type="text/javascript" src="js/tabletocsv.js"></script>
+    <script type="text/javascript" src="js/sortTable.js"></script>
+    <script type="text/javascript" src="js/searchFilter.js"></script>
+    <script type="text/javascript" src="js/conditionalFormat.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function () {

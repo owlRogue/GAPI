@@ -5,7 +5,7 @@ credentialsv2.js
 Keys.js
 Sheets.js
 *.bak
-.bak
+public.bak/
 
 # Logs
 logs

@@ -1,4 +1,4 @@
-function renderFilters(filters) {
+var renderFilters = filters => {
 
     // Generate filters:
     const dimensionDiv = $('#dimension-filters');
@@ -12,7 +12,7 @@ function renderFilters(filters) {
     const dimension$ = $('input.dimension');
     const formatted$ = $('input.formatted-metric');
     
-    $(index).each(function (i) {
+    $(index).each(i => {
         const inputs = $('<input>')
             .addClass('search-key')
 

@@ -1,16 +1,16 @@
 // Call sortTable function to sort column on header click:
 
 const cells = $('thead').find('td');
-cells.each(function (i) {
-    cells[i].onclick = (function (n) {
-        return function () {
+cells.each(i => {
+    cells[i].onclick = (n => {
+        return () => {
             sortTable(n);
         };
     })(i);
 });
 
 // Logic to sort the table with column header click:
-function sortTable(n) {
+var sortTable = n => {
     let table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
     table = document.getElementById('tableBody');
     const head = document.getElementById('tableHead').getElementsByTagName('td')[n];

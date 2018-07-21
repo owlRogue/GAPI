@@ -1,4 +1,4 @@
-function renderDownloadButton(table) {
+var renderDownloadButton = table => {
     // duplicateDiv = $('<div id="duplicates">');
 
     // duplicateDiv.append(/* Append duplicate download buttons here */);
@@ -13,7 +13,7 @@ function renderDownloadButton(table) {
         // .attr('onclick', $('#theTable').table2csv())
         .text('download CSV');
 
-    $('.download-button').on("click", function callTable() {
+    $('.download-button').on("click", callTable = () => {
         $('#theTable').table2csv();
     });
 };

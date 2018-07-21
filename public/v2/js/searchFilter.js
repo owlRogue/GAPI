@@ -1,5 +1,5 @@
 // // Logic to filter using .search-key filters:
-function searchAll() {
+var searchAll = () => {
     let trs, tds;
     const vlu = [];
 
@@ -29,7 +29,7 @@ function searchAll() {
     console.log(trs);
 
     // // For each table row, let tr = row.
-    trs.forEach(function (tr, i) {
+    trs.forEach((tr, i) => {
 
         let filters = [];
         vlu.forEach((filter, j) =>
@@ -39,7 +39,7 @@ function searchAll() {
         // const testhere$ = new Array($('tr td')); // prints classes!
         const testhere$ = Array.from(document.getElementsByTagName('tr td'));
         console.log(testhere$); //
-        testhere$.forEach(function(i) {
+        testhere$.forEach(i => {
 
             // if (testhere$[2] && testhere$[3] && testhere$[4] && testhere$[5] && testhere$[6] && testhere$[7] && testhere$[8] && testhere$[9] && testhere$[10] && testhere$[11] && testhere$[12] && testhere$[13] && testhere$[14] && testhere$[15] && testhere$[16]) {
             if (testhere$) {

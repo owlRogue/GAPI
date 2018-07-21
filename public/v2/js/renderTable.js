@@ -1,5 +1,5 @@
 // Push Data to table:
-function renderTable(tableData) {
+var renderTable = tableData => {
     $('#input-filters').removeClass('hide');
 
     const table = document.getElementById("tableBody");
@@ -37,7 +37,7 @@ function renderTable(tableData) {
     // let input$ = $('input'); // console.log(input$);
 
 
-    $(headerCell$).each(function (i) {
+    $(headerCell$).each(i => {
         const headers = $('thead td');
         const celldata = this.innerHTML;
 
@@ -92,9 +92,9 @@ function renderTable(tableData) {
 
     // Call sortTable function to sort column on header click:
     const cells = $('thead').find('td');
-    cells.each(function (i) {
-        cells[i].onclick = (function (n) {
-            return function () {
+    cells.each(i => {
+        cells[i].onclick = (n => {
+            return () => {
                 sortTable(n);
             };
         })(i);
@@ -110,7 +110,7 @@ function renderTable(tableData) {
         // .attr('onclick', $('#theTable').table2csv())
         .text('download CSV');
 
-    $('.download-button').on("click", function callTable() {
+    $('.download-button').on("click", callTable = () => {
         $('#theTable').table2csv()
     });
 };

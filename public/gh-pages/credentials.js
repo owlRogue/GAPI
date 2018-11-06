@@ -1,5 +1,5 @@
 var credentials = {
-    gapi_Key: "AIzaSyCAHkUP1S8LPnopLf3juH34O5l-iJWUdL8", // KCH@GM
+    gapi_Key: "AIzaSyDmahkvaiX7_UfvhIeneSkESNKR4MhDRbM", // KCH@GM
     gapi_Client: "636126207964-eu6thv1vbffi8g7t0smvstctlgmmb6t6.apps.googleusercontent.com"
   };
 

@@ -15,8 +15,6 @@ function sortTable(n) {
     table = document.getElementById('tableBody');
     const head = document.getElementById('tableHead').getElementsByTagName('td')[n];
     const head$ = $(head);
-    // const i$ = $('i');
-    // i$.addClass('icon-arrow-down');
 
     switching = true;
     dir = 'asc';
@@ -25,7 +23,6 @@ function sortTable(n) {
         dir = 'desc';
         head$.removeClass('asc');
         head$.addClass('desc');
-        // $('i').addClass('icon-arrow-down')
     } else {
         head$.removeClass('desc');
         head$.addClass('asc');

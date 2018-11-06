@@ -1,6 +1,6 @@
 var credentials = {
     gapi_Key: "",
-    gapi_Client: "636126207964-eu6thv1vbffi8g7t0smvstctlgmmb6t6.apps.googleusercontent.com"
+    gapi_Client: ""
   };
 
 var sheet = [
